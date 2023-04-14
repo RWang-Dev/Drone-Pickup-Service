@@ -25,9 +25,6 @@ public:
         else if (cmd == "ScheduleTrip") {
             model.ScheduleTrip(data);
         }
-        else if (cmd == "CollectData") {
-            
-        }
         else if (cmd == "ping") {
             returnValue["response"] = data;
         }
