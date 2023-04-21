@@ -11,7 +11,7 @@
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
 
-RechargerDroneDrone::RechargerDroneDrone(JsonObject& obj) : details(obj) {
+RechargerDrone::RechargerDrone(JsonObject& obj) : details(obj) {
   JsonArray pos(obj["position"]);
   position = {pos[0], pos[1], pos[2]};
   JsonArray dir(obj["direction"]);
@@ -22,7 +22,7 @@ RechargerDroneDrone::RechargerDroneDrone(JsonObject& obj) : details(obj) {
   available = true;
 }
 
-RechargerDroneDrone::~RechargerDroneDrone() {
+RechargerDrone::~RechargerDrone() {
   // Delete dynamically allocated variables
   delete graph;
 //   delete nearestEntity;
@@ -30,7 +30,7 @@ RechargerDroneDrone::~RechargerDroneDrone() {
 //   delete toFinalDestination;
 }
 
-void RechargerDroneDrone::Update(double dt, std::vector<IEntity*> scheduler) {
+void RechargerDrone::Update(double dt, std::vector<IEntity*> scheduler) {
 //   if (available)
 //     GetNearestEntity(scheduler);
 

@@ -5,6 +5,7 @@
 
 #include "IEntity.h"
 #include "IStrategy.h"
+#include "DijkstraStrategy.h"
 #include "RechargerDrone.h"
 #include "math/vector3.h"
 
@@ -91,6 +92,16 @@ class RechargerDrone : public IEntity {
   void SetDestination(Vector3 des_) { destination = des_; }
 
   /**
+   * @brief Sets the droneToRecharge variable
+   * @param droneToRecharge The drone to recharge
+   */
+  void SetDroneToRecharge(IEntity* droneToRecharge) { 
+    this->droneToRecharge = droneToRecharge; 
+    destination = droneToRecharge->GetPosition();
+    available = false;
+    }
+
+  /**
    * @brief Removing the copy constructor and assignment operator
    * so that Recharger drones cannot be copied.
    */
@@ -104,9 +115,8 @@ class RechargerDrone : public IEntity {
   Vector3 destination;
   float speed;
   bool available;
-//   IEntity* nearestEntity = nullptr;
-//   IStrategy* toRobot = nullptr;
-//   IStrategy* toFinalDestination = nullptr;
+  IEntity* droneToRecharge = nullptr;
+  IStrategy* routingStrategy = nullptr;
 };
 
 #endif
