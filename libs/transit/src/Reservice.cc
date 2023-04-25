@@ -23,7 +23,7 @@ void Reservice::RemoveRechargerDrone(RechargerDrone *drone_to_delete) {
 }
 
 RechargerDrone* Reservice::FindNearestAvailableRechargerDrone(IEntity *drone) {
-  int min_distance = 0;
+  int min_distance = 0; //Might have to change this to infinity
 
   RechargerDrone *nearest_recharger_drone = nullptr;
   

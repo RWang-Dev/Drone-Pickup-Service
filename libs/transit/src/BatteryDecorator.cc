@@ -13,13 +13,12 @@
 
 BatteryDecorator::BatteryDecorator(IEntity* ent) {
   this->drone = ent;
-  outOfBattery = false;
   battery = 100;
-
-  std::cout << "Battery" << std::endl;
+  outOfBattery = false;
 }
 
 BatteryDecorator::~BatteryDecorator() {
+  delete drone;
 }
 
 void BatteryDecorator::Update(double dt, std::vector<IEntity*> scheduler) {
