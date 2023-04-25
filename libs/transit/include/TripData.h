@@ -3,6 +3,9 @@
 
 #include <string>
 
+/**
+ * Data struct for storing data on a single trip.
+ */
 struct TripData {
   int tripId;                   // ID of the trip
   int droneId;                  // ID of the drone the carried out this trip
