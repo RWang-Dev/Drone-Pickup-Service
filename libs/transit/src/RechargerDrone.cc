@@ -33,13 +33,20 @@ RechargerDrone::~RechargerDrone() {
 }
 
 void RechargerDrone::Update(double dt, std::vector<IEntity*> scheduler) {
-  if (available == false) {
-      if(!(routingStrategy->IsCompleted())) { 
-        routingStrategy->Move(this, dt);
-      } else {
-        
-        RechargerDrone::RechargeDrone();
+    if (available == false) {
+      if (routingStrategy == nullptr) {
+        routingStrategy = new BeelineStrategy(position, destination);
       }
+      else {
+        if(!(routingStrategy->IsCompleted())) { 
+          
+          routingStrategy->Move(this, dt);
+        } else {
+          
+          RechargerDrone::RechargeDrone();
+          finishedRechargingDrone = true;
+        }
+    }
   }
 }
 
@@ -55,10 +62,7 @@ void RechargerDrone::SetDroneToRecharge(IEntity* droneToRecharge) {
 
 void RechargerDrone::RechargeDrone() { 
   // sleep_until(system_clock::now() + seconds(10));
-  // std::cout << "Done recharging drone" << std::endl;
+  std::cout << "Done recharging drone";
   available = true;
   droneToRecharge = nullptr;
-  finishedRechargingDrone = true;
-  delete routingStrategy;
-  // std::cout << "Routing strat deleted" << std::endl;
 }

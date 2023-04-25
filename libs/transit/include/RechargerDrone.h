@@ -111,7 +111,7 @@ class RechargerDrone : public IEntity {
 
   /**
    * @brief Recharges out-of-battery drone
-   * @param droneToRecharge The drone to recharge
+   * @param dt Delta time
    */
   void RechargeDrone();
 
