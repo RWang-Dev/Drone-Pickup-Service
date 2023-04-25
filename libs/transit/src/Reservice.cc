@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <cmath>
 
+Reservice* Reservice::instancePtr = nullptr;
+
 Reservice* Reservice::GetInstance() {
   if (instancePtr == nullptr) {
     instancePtr = new Reservice();
@@ -25,7 +27,7 @@ void Reservice::RemoveRechargerDrone(RechargerDrone *drone_to_delete) {
   this->rechargerDrones.erase(iter);
 }
 
-RechargerDrone* Reservice::FindNearestAvailableRechargerDrone(IEntity* drone) {
+void Reservice::FindNearestAvailableRechargerDrone(IEntity* drone) {
   float min_distance = std::numeric_limits<float>::max();
 
   RechargerDrone* nearest_recharger_drone = nullptr;
@@ -41,5 +43,6 @@ RechargerDrone* Reservice::FindNearestAvailableRechargerDrone(IEntity* drone) {
     }
   }
 
-  return nearest_recharger_drone;
+  nearest_recharger_drone->SetDestination(drone->GetPosition());
+  nearest_recharger_drone->SetAvailability(false);
 }

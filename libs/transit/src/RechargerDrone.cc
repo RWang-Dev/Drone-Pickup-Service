@@ -19,8 +19,8 @@ RechargerDrone::RechargerDrone(JsonObject& obj) : details(obj) {
 
   speed = obj["speed"];
 
-  // Reservice* mediator = Reservice::GetInstance(); Causing compile error
-  // mediator->AddRechargerDrone(this);
+  Reservice* mediator = Reservice::GetInstance();
+  mediator->AddRechargerDrone(this);
 
   available = true;
 }
