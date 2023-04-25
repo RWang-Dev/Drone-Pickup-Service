@@ -15,10 +15,12 @@ class DataCollection {
 private: 
   DataCollection() {};
     
-  static DataCollection* instance;  // The single instance of DataCollection
-  std::list<struct TripData> trips; // The trip data
-  int totalDistance;                // Total distance traveled
-  int totalRecharges;               // The total number of drone recharge sessions
+  int currentTripId;                   // ID of the next trip to add.
+  static DataCollection* instance;     // The single instance of DataCollection
+  std::list<struct TripData*> trips;   // The trip data
+  float totalDistance;                 // Total distance traveled
+  float totalBatteryUsage;             // Total battery used
+  int totalRecharges;                  // The total number of drone recharge sessions
 
 public:
   // Delete copy constructor & assignment operator.
@@ -26,20 +28,20 @@ public:
   DataCollection* operator=(const DataCollection& o) = delete;
 
   /**
-      * Gets the single instance of DataCollection.
-      */
-  static DataCollection* getInstance();
+    * Gets the single instance of DataCollection.
+    */
+  static DataCollection* GetInstance();
 
   /**
-      * Adds a trip the list of trips.
-      * @param trip The trip to add.
-      */
-  void addTrip(struct TripData* trip);
+    * Adds a trip the list of trips.
+    * @param trip The trip to add.
+    */
+  void AddTrip(struct TripData* trip);
 
   /**
-      * @brief Uses data collected to create CSV file.
-      */
-  void outputCSVFile();
+    * @brief Uses data collected to create CSV file.
+    */
+  void OutputCSVFile();
 };
 
 #endif
