@@ -1,6 +1,6 @@
 #define _USE_MATH_DEFINES
 #include "RechargerDrone.h"
-
+#include "Reservice.h"
 #include <cmath>
 #include <limits>
 
@@ -18,6 +18,9 @@ RechargerDrone::RechargerDrone(JsonObject& obj) : details(obj) {
   direction = {dir[0], dir[1], dir[2]};
 
   speed = obj["speed"];
+
+  // Reservice* mediator = Reservice::GetInstance(); Causing compile error
+  // mediator->AddRechargerDrone(this);
 
   available = true;
 }

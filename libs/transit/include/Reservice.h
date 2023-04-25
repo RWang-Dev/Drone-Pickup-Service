@@ -7,17 +7,19 @@
 
 class Reservice {
 public:
-  Reservice();
-  Reservice* GetInstance();
+  Reservice(const Reservice& o) = delete;
+  static Reservice* GetInstance();
 
-  RechargerDrone* FindNearestAvailableRechargerDrone(IEntity*);
+  RechargerDrone* FindNearestAvailableRechargerDrone(IEntity* drone);
 
   void AddRechargerDrone(RechargerDrone* drone);
   void RemoveRechargerDrone(RechargerDrone* drone);
+  std::vector<RechargerDrone*> GetRechargerDrones() {return rechargerDrones; };
 
 private:
-  std::vector<RechargerDrone *> rechargerDrones;
-  static Reservice *instance;
+  std::vector<RechargerDrone*> rechargerDrones;
+  static Reservice* instancePtr; //Singleton static pointer which points to instance of this class
+  Reservice() {}; //Default constructor
 };
 
 #endif

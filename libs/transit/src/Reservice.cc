@@ -1,13 +1,16 @@
 #include "Reservice.h"
 #include "RechargerDrone.h"
 #include <algorithm>
-
-Reservice::Reservice() {
-  Reservice::instance = this;
-}
+#include <cmath>
 
 Reservice* Reservice::GetInstance() {
-  return Reservice::instance;
+  if (instancePtr == nullptr) {
+    instancePtr = new Reservice();
+    return instancePtr;
+  }
+  else {
+    return instancePtr;
+  }
 }
 
 void Reservice::AddRechargerDrone(RechargerDrone *drone_to_add) {
@@ -22,12 +25,12 @@ void Reservice::RemoveRechargerDrone(RechargerDrone *drone_to_delete) {
   this->rechargerDrones.erase(iter);
 }
 
-RechargerDrone* Reservice::FindNearestAvailableRechargerDrone(IEntity *drone) {
-  int min_distance = 0; //Might have to change this to infinity
+RechargerDrone* Reservice::FindNearestAvailableRechargerDrone(IEntity* drone) {
+  float min_distance = std::numeric_limits<float>::max();
 
-  RechargerDrone *nearest_recharger_drone = nullptr;
+  RechargerDrone* nearest_recharger_drone = nullptr;
   
-  int distance = 0;
+  float distance = 0;
   for (auto recharger_drone : this->rechargerDrones) {
     if (recharger_drone->GetAvailability()) {
       distance = recharger_drone->GetPosition().Distance(drone->GetPosition()); 
