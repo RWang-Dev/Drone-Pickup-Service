@@ -1,5 +1,5 @@
-#ifndef DATACOLLECTION_H_
-#define DATACOLLECTION_H_
+#ifndef TRIPDATA_H_
+#define TRIPDATA_H_
 
 #include <string>
 
