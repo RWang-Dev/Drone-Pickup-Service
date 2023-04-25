@@ -2,35 +2,43 @@
 #define DATACOLLECTION_H_
 
 #include <vector>
+#include <list>
 
+#include "TripData.h"
 #include "math/vector3.h"
 
-class DataCollection{
-    private:
-        static DataCollection* instancePtr;
-        DataCollection() {};
+/** 
+ * Singleton class for collecting data about each trip that occurs during the
+ * simulation.
+ */
+class DataCollection { 
+  private: DataCollection() {};
 
-        float distanceTraveled;
-        float distanceLeft;
-        int numTrips; //Remove later
-        Vector3 dronePosition;
-        Vector3 robotPosition;
-        int versionNum = 0;
+     static DataCollection* instance;  // The single instance of DataCollection
+     std::list<struct TripData> trips; // The trip data
+     int totalDistance;                // Total distance traveled
+     int totalRecharges;               // The total number of drone recharge sessions
 
-    public:
-        DataCollection(const DataCollection& o) = delete;
-        static DataCollection* getInstance();
-         /**
-         * @brief Sets private variables using data collected from drone and robot
-         * @param 
-         */
-        void setValues();
+  public:
+     // Delete copy constructor & assignment operator.
+     DataCollection(const DataCollection& o) = delete;
+     DataCollection* operator=(const DataCollection& o) = delete;
 
-        /**
-         * @brief Uses data collected to create CSV file
-         * @param 
-         */
-        void outputCSVFile();
+     /**
+      * Gets the single instance of DataCollection.
+      */
+     static DataCollection* getInstance();
+
+     /**
+      * Adds a trip the list of trips.
+      * @param trip The trip to add.
+      */
+     void addTrip(struct TripData* trip);
+
+     /**
+      * @brief Uses data collected to create CSV file.
+      */
+     void outputCSVFile();
 };
 
 #endif
