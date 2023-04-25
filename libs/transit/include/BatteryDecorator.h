@@ -78,10 +78,10 @@ class BatteryDecorator : public IEntity {
   virtual void SetGraph(const IGraph* graph) { drone->SetGraph(graph); }
 
   /**
-  //  * @brief increment battery by certain percent 
-  //  * @param batt amount to add
-  //  */
-  // virtual void IncrementBattery(float batt) { battery += batt; }
+   * @brief increment battery by certain percent 
+   * @param batt amount to add
+   */
+  virtual void IncrementBattery(float batt) { battery += batt; }
 
  private:
   float battery;

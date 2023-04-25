@@ -10,6 +10,7 @@
 #include "DijkstraStrategy.h"
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
+#include "BatteryDecorator.h"
 
 RechargerDrone::RechargerDrone(JsonObject& obj) : details(obj) {
   JsonArray pos(obj["position"]);
@@ -43,8 +44,8 @@ void RechargerDrone::Update(double dt, std::vector<IEntity*> scheduler) {
           routingStrategy->Move(this, dt);
         } else {
           
-          RechargerDrone::RechargeDrone();
-          finishedRechargingDrone = true;
+          RechargerDrone::RechargeDrone(dt);
+          
         }
     }
   }
@@ -52,7 +53,7 @@ void RechargerDrone::Update(double dt, std::vector<IEntity*> scheduler) {
 
 void RechargerDrone::SetDroneToRecharge(IEntity* droneToRecharge) {
   // std::cout << "Successfully set drone" << std::endl;
-  this->droneToRecharge = droneToRecharge; 
+  this->droneToRecharge = droneToRecharge;
   destination = droneToRecharge->GetPosition();
   available = false;
   finishedRechargingDrone = false;
@@ -60,9 +61,15 @@ void RechargerDrone::SetDroneToRecharge(IEntity* droneToRecharge) {
   // std::cout << "Routing strat made" << std::endl;
 }
 
-void RechargerDrone::RechargeDrone() { 
-  // sleep_until(system_clock::now() + seconds(10));
-  std::cout << "Done recharging drone";
-  available = true;
-  droneToRecharge = nullptr;
+void RechargerDrone::RechargeDrone(double dt) { 
+  BatteryDecorator* drone = dynamic_cast<BatteryDecorator*>(droneToRecharge);
+  if (drone->GetBattery() < 100) {
+    drone->IncrementBattery(dt * 5);
+  } else {
+    std::cout << "Done recharging drone" << std::endl;
+    available = true;
+    droneToRecharge = nullptr;
+    finishedRechargingDrone = true;
+  }
+  
 }

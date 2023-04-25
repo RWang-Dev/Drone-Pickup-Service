@@ -113,7 +113,7 @@ class RechargerDrone : public IEntity {
    * @brief Recharges out-of-battery drone
    * @param dt Delta time
    */
-  void RechargeDrone();
+  void RechargeDrone(double dt);
 
   /**
    * @brief Removing the copy constructor and assignment operator
