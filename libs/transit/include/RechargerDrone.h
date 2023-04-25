@@ -2,12 +2,17 @@
 #define RECHARGERDRONE_H_
 
 #include <vector>
+#include <chrono>
+#include <thread>
 
 #include "IEntity.h"
 #include "IStrategy.h"
 #include "DijkstraStrategy.h"
 #include "RechargerDrone.h"
 #include "math/vector3.h"
+
+using namespace std::this_thread; // sleep_for, sleep_until
+using namespace std::chrono; // nanoseconds, system_clock, seconds
 
 // Represents a recharger drone in a physical system.
 // Drones move using euler integration based on a specified
@@ -67,6 +72,12 @@ class RechargerDrone : public IEntity {
   bool GetAvailability() const { return available; }
 
   /**
+   * @brief Gets the boolean for if drone has been finished recharing
+   * @return Boolean value for finishedRechargingDrone
+   */
+  bool GetFinishedRechargingDrone() const { return finishedRechargingDrone; }
+
+  /**
    * @brief Updates the Recharger drone's position
    * @param dt Delta time
    * @param scheduler Vector containing all the entities in the system
@@ -92,14 +103,17 @@ class RechargerDrone : public IEntity {
   void SetDestination(Vector3 des_) { destination = des_; }
 
   /**
-   * @brief Sets the droneToRecharge variable
+   * @brief Sets the droneToRecharge variable to drone pointer, destination variable to 
+   * drone position, and available variable to false
    * @param droneToRecharge The drone to recharge
    */
-  void SetDroneToRecharge(IEntity* droneToRecharge) { 
-    this->droneToRecharge = droneToRecharge; 
-    destination = droneToRecharge->GetPosition();
-    available = false;
-    }
+  void SetDroneToRecharge(IEntity* droneToRecharge);
+
+  /**
+   * @brief Recharges out-of-battery drone
+   * @param droneToRecharge The drone to recharge
+   */
+  void RechargeDrone();
 
   /**
    * @brief Removing the copy constructor and assignment operator
@@ -115,6 +129,7 @@ class RechargerDrone : public IEntity {
   Vector3 destination;
   float speed;
   bool available;
+  bool finishedRechargingDrone;
   IEntity* droneToRecharge = nullptr;
   IStrategy* routingStrategy = nullptr;
 };

@@ -65,6 +65,12 @@ class BatteryDecorator : public IEntity {
   virtual float GetBattery() const { return battery; };
 
   /**
+   * @brief Set battery of entity
+   * @param battery Battery amount to set entity's battery to
+   */
+  virtual void SetBattery(float newBatteryAmt) { battery = newBatteryAmt; };
+
+  /**
    * @brief Sets the graph object used by the entity in the simulation, 
    * @param graph The IGraph object to be used.
    */

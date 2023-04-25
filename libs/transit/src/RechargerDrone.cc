@@ -18,48 +18,46 @@ RechargerDrone::RechargerDrone(JsonObject& obj) : details(obj) {
   direction = {dir[0], dir[1], dir[2]};
 
   speed = obj["speed"];
+  available = true;
+  finishedRechargingDrone = false;
 
+  //Add itself to reservice's vector of recharger drones when instantiated
   Reservice* mediator = Reservice::GetInstance();
   mediator->AddRechargerDrone(this);
-
-  available = true;
 }
 
 RechargerDrone::~RechargerDrone() {
   // Delete dynamically allocated variables
   delete graph;
-//   delete nearestEntity;
-//   delete toRobot;
-//   delete toFinalDestination;
+  delete droneToRecharge;
+  delete routingStrategy;
 }
 
 void RechargerDrone::Update(double dt, std::vector<IEntity*> scheduler) {
-//   if (available)
-//     GetNearestEntity(scheduler);
-
-//   if (toRobot) {
-//     toRobot->Move(this, dt);
-
-//     if (toRobot->IsCompleted()) {
-//       delete toRobot;
-//       toRobot = nullptr;
-//       pickedUp = true;
-//     }
-//   } else if (toFinalDestination) {
-//     toFinalDestination->Move(this, dt);
-
-//     if (nearestEntity && pickedUp) {
-//       nearestEntity->SetPosition(position);
-//       nearestEntity->SetDirection(direction);
-//     }
-
-//     if (toFinalDestination->IsCompleted()) {
-//       delete toFinalDestination;
-//       toFinalDestination = nullptr;
-//       nearestEntity = nullptr;
-//       available = true;
-//       pickedUp = false;
-//     }
-//   }
+  if (available == false) {
+    if (routingStrategy == nullptr) {
+      routingStrategy = new BeelineStrategy(position, destination);
+    }
+    else {
+      if(!(routingStrategy->IsCompleted())) { 
+        routingStrategy->Move(this, dt);
+      } else {
+        RechargerDrone::RechargeDrone();
+        finishedRechargingDrone = true;
+      }
+    }
+  }
 }
 
+void RechargerDrone::SetDroneToRecharge(IEntity* droneToRecharge) { 
+  this->droneToRecharge = droneToRecharge; 
+  destination = droneToRecharge->GetPosition();
+  available = false;
+}
+
+void RechargerDrone::RechargeDrone() { 
+  // sleep_until(system_clock::now() + seconds(10));
+  std::cout << "Done recharging drone";
+  available = true;
+  droneToRecharge = nullptr;
+}

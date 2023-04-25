@@ -1,4 +1,6 @@
 #include "BatteryDecorator.h"
+#include "Reservice.h"
+#include "RechargerDrone.h"
 #define _USE_MATH_DEFINES
 
 #include <cmath>
@@ -22,16 +24,24 @@ BatteryDecorator::~BatteryDecorator() {
 }
 
 void BatteryDecorator::Update(double dt, std::vector<IEntity*> scheduler) {
-  // std::cout << drone->GetId() << " Battery level: " << battery << std::endl;
-    drone->Update(dt, scheduler);
-//   if (!outOfBattery) {
-//     if (!(drone->GetAvailability())){
-//         battery -= 2*dt;
-//     }
-    
-//     if (battery <= 0) {
-//         // Call mediator's function once
-//         outOfBattery = true;
-//     }
-//   }
+    if (outOfBattery == false) {
+      drone->Update(dt, scheduler);
+      if (drone->GetAvailability() == false) {
+        battery -= 2*dt;
+        // std::cout << drone->GetId() << " Battery level: " << battery << std::endl;
+      }
+      else {
+        battery -= dt;
+      }
+
+      if (battery <= 0) {
+        outOfBattery = true;
+        //Call reservice's FindNearestAvailableRechargerDrone function once
+        Reservice* mediator = Reservice::GetInstance();
+        RechargerDrone* rDrone = mediator->FindNearestAvailableRechargerDrone(drone);
+        if (rDrone->GetFinishedRechargingDrone() == true) {
+          battery = 100;
+        }
+      }
+    }
 }

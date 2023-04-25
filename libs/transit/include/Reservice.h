@@ -20,10 +20,11 @@ public:
   static Reservice* GetInstance();
 
   /**
-   * @brief Finds nearest, available recharger drone and sets its destination to out-of-battery drone
+   * @brief Finds nearest, available recharger drone and calls its SetDroneToRecharge function
    * @param drone Drone that's out of battery and needs to be recharged
+   * @return nearest, available recharger drone
    */  
-  void FindNearestAvailableRechargerDrone(IEntity* drone);
+  RechargerDrone* FindNearestAvailableRechargerDrone(IEntity* drone);
 
   /**
    * @brief Adds recharger drone to recharger drone vector

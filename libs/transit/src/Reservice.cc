@@ -27,7 +27,7 @@ void Reservice::RemoveRechargerDrone(RechargerDrone *drone_to_delete) {
   this->rechargerDrones.erase(iter);
 }
 
-void Reservice::FindNearestAvailableRechargerDrone(IEntity* drone) {
+RechargerDrone* Reservice::FindNearestAvailableRechargerDrone(IEntity* drone) {
   float min_distance = std::numeric_limits<float>::max();
 
   RechargerDrone* nearest_recharger_drone = nullptr;
@@ -43,6 +43,6 @@ void Reservice::FindNearestAvailableRechargerDrone(IEntity* drone) {
     }
   }
 
-  nearest_recharger_drone->SetDestination(drone->GetPosition());
-  nearest_recharger_drone->SetAvailability(false);
+  nearest_recharger_drone->SetDroneToRecharge(drone); 
+  return nearest_recharger_drone;
 }
