@@ -2,6 +2,9 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
+#include <chrono>
+#include <ctime>
+#include <iomanip>
 
 DataCollection* DataCollection::GetInstance() {
     if (instance == nullptr) {
@@ -34,7 +37,7 @@ void DataCollection::AddTrip(struct TripData *trip) {
   currentTripId++;
 } 
 
-bool DataCollection::OutputCSVFile(std::string filename) {
+bool DataCollection::WriteCSVFile(std::string filename) {
   
   // Try to open file
   std::ofstream csvOut { filename };
@@ -58,4 +61,18 @@ bool DataCollection::OutputCSVFile(std::string filename) {
   // Clean up
   csvOut.close();
   return true;
+}
+
+bool DataCollection::OutputCSVFile() {
+  std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
+  std::time_t now_t = std::chrono::system_clock::to_time_t(now);
+
+  std::stringstream time_stream;
+  time_stream << "simdata-";
+  time_stream << std::put_time(std::localtime(&now_t), "%Y%m%d%H%M%S");
+  time_stream << ".csv";
+
+  std::string filename = time_stream.str();
+
+  return WriteCSVFile(filename);
 }

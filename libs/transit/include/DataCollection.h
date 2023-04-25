@@ -25,6 +25,12 @@ private:
   // Get the string representation of a trip
   static std::string GetTripCSV(struct TripData* trip);
 
+  /**
+    * @brief Uses data collected to create CSV file.
+    * @param filename Location to write to
+    * @return Whether the write succeeded
+    */
+  bool WriteCSVFile(std::string filename);
 public:
   // Delete copy constructor & assignment operator.
   DataCollection(const DataCollection& o) = delete;
@@ -42,11 +48,10 @@ public:
   void AddTrip(struct TripData* trip);
 
   /**
-    * @brief Uses data collected to create CSV file.
-    * @param filename Location to write to
-    * @return Whether the write succeeded
-    */
-  bool OutputCSVFile(std::string filename);
+   * Writes CSV file to a file derived from date and time.
+   * @return Whether the write succeeded
+   */
+  bool OutputCSVFile();
 };
 
 #endif
