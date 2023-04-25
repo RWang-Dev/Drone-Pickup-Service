@@ -22,7 +22,7 @@ BatteryDecorator::~BatteryDecorator() {
 }
 
 void BatteryDecorator::Update(double dt, std::vector<IEntity*> scheduler) {
-  std::cout << drone->GetId() << " Battery level: " << battery << std::endl;
+  // std::cout << drone->GetId() << " Battery level: " << battery << std::endl;
     drone->Update(dt, scheduler);
 //   if (!outOfBattery) {
 //     if (!(drone->GetAvailability())){
