@@ -64,6 +64,12 @@ class BatteryDecorator : public IEntity {
    */
   virtual float GetBattery() const { return battery; };
 
+  /**
+   * @brief Sets the graph object used by the entity in the simulation, 
+   * @param graph The IGraph object to be used.
+   */
+  virtual void SetGraph(const IGraph* graph) { drone->SetGraph(graph); }
+
  private:
   float battery;
   bool outOfBattery;
