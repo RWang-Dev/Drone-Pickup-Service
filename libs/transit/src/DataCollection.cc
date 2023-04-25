@@ -6,6 +6,8 @@
 #include <ctime>
 #include <iomanip>
 
+DataCollection* DataCollection::instance = nullptr;
+
 DataCollection* DataCollection::GetInstance() {
     if (instance == nullptr) {
         instance = new DataCollection();
