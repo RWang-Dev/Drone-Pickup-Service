@@ -22,6 +22,9 @@ private:
   float totalBatteryUsage;             // Total battery used
   int totalRecharges;                  // The total number of drone recharge sessions
 
+  // Get the string representation of a trip
+  static std::string GetTripCSV(struct TripData* trip);
+
 public:
   // Delete copy constructor & assignment operator.
   DataCollection(const DataCollection& o) = delete;
@@ -40,8 +43,10 @@ public:
 
   /**
     * @brief Uses data collected to create CSV file.
+    * @param filename Location to write to
+    * @return Whether the write succeeded
     */
-  void OutputCSVFile();
+  bool OutputCSVFile(std::string filename);
 };
 
 #endif
