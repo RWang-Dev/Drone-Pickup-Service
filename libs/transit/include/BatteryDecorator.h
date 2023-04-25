@@ -3,6 +3,7 @@
 
 #include "IEntity.h"
 #include "IStrategy.h"
+#include "RechargerDrone.h"
 
 /**
  * @brief this class inhertis from the IStrategy class and is represents
@@ -80,6 +81,7 @@ class BatteryDecorator : public IEntity {
   float battery;
   bool outOfBattery;
   IEntity* drone;
+  RechargerDrone* rDrone;
 };
 
 

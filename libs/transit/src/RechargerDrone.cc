@@ -30,34 +30,35 @@ RechargerDrone::~RechargerDrone() {
   // Delete dynamically allocated variables
   delete graph;
   delete droneToRecharge;
-  delete routingStrategy;
 }
 
 void RechargerDrone::Update(double dt, std::vector<IEntity*> scheduler) {
   if (available == false) {
-    if (routingStrategy == nullptr) {
-      routingStrategy = new BeelineStrategy(position, destination);
-    }
-    else {
       if(!(routingStrategy->IsCompleted())) { 
         routingStrategy->Move(this, dt);
       } else {
+        
         RechargerDrone::RechargeDrone();
-        finishedRechargingDrone = true;
       }
-    }
   }
 }
 
-void RechargerDrone::SetDroneToRecharge(IEntity* droneToRecharge) { 
+void RechargerDrone::SetDroneToRecharge(IEntity* droneToRecharge) {
+  // std::cout << "Successfully set drone" << std::endl;
   this->droneToRecharge = droneToRecharge; 
   destination = droneToRecharge->GetPosition();
   available = false;
+  finishedRechargingDrone = false;
+  routingStrategy = new BeelineStrategy(position, destination);
+  // std::cout << "Routing strat made" << std::endl;
 }
 
 void RechargerDrone::RechargeDrone() { 
   // sleep_until(system_clock::now() + seconds(10));
-  std::cout << "Done recharging drone";
+  // std::cout << "Done recharging drone" << std::endl;
   available = true;
   droneToRecharge = nullptr;
+  finishedRechargingDrone = true;
+  delete routingStrategy;
+  // std::cout << "Routing strat deleted" << std::endl;
 }

@@ -36,12 +36,15 @@ void BatteryDecorator::Update(double dt, std::vector<IEntity*> scheduler) {
 
       if (battery <= 0) {
         outOfBattery = true;
-        //Call reservice's FindNearestAvailableRechargerDrone function once
+        // Call reservice's FindNearestAvailableRechargerDrone function once
         Reservice* mediator = Reservice::GetInstance();
-        RechargerDrone* rDrone = mediator->FindNearestAvailableRechargerDrone(drone);
+        rDrone = mediator->FindNearestAvailableRechargerDrone(drone);
+      }
+    } else {
         if (rDrone->GetFinishedRechargingDrone() == true) {
           battery = 100;
+          outOfBattery = false;
+          rDrone = nullptr;
         }
-      }
     }
 }
