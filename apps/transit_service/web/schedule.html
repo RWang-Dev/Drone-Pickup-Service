@@ -78,6 +78,27 @@
         transform: translateY(2px);
         }
 
+        .droneButton {
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #000000;
+        background-color: rgb(245, 245, 245);
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 6px #dedede;
+        }
+
+        .droneButton:hover {background-color: rgb(253, 253, 253)}
+
+        .droneButton:active {
+        background-color: rgb(182, 182, 182);
+        box-shadow: 0 5px rgb(146, 146, 146);
+        transform: translateY(2px);
+        }
+
         .rechargerDroneButton {
         padding: 10px 20px;
         font-size: 16px;
@@ -132,6 +153,7 @@
     </div>
     <div><input type="button" class = "scheduleButton" value="Schedule Trip" onclick="schedule()"></div>
     <div><input type="button" class = "humanButton" value="Add Human" onclick="addHuman()" style="margin-top: 10px;"></div>
+    <div><input type="button" class = "droneButton" value="Add Drone" onclick="addDrone()" style="margin-top: 10px;"></div>
     <div><input type="button" class = "rechargerDroneButton" value="Add Recharger Drone" onclick="addRechargerDrone()" style="margin-top: 10px;"></div>
 
     <div id="nameError"></div>
@@ -263,6 +285,22 @@
                 "offset": [0, 1.5, 0]
             });
             rechargerDroneID += 1;
+        }
+
+        var droneID = 2;
+        function addDrone() {
+            api.sendCommand("CreateEntity", {
+                "type": "drone",
+                "name": "Drone " + droneID,
+                "mesh": "assets/model/drone.glb",
+                "position": [650, 300, -228.623],
+                "scale": [0.1, 0.1, 0.1],
+                "rotation": [0, 0, 0, 0],
+                "direction": [1,0,0],
+                "speed": 30.0,
+                "offset": [0, 1.5, 0]
+            });
+            droneID += 1;
         }
     </script>
 </body>
