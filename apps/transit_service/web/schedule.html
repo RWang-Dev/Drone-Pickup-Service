@@ -35,6 +35,90 @@
         #search-strategy {
             width: 100px;
         }
+
+        .scheduleButton {
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #006e3e;
+        background-color: #a8ffdb;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 6px #79ca9a;
+        }
+
+        .scheduleButton:hover {background-color: #c9feed}
+
+        .scheduleButton:active {
+        background-color: #6dc5a8;
+        box-shadow: 0 5px #a2a2a2;
+        transform: translateY(2px);
+        }
+
+        .humanButton {
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #6d684f;
+        background-color: bisque;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 6px #ca9d79;
+        }
+
+        .humanButton:hover {background-color: #ffede0}
+
+        .humanButton:active {
+        background-color: tan;
+        box-shadow: 0 5px #8b531f;
+        transform: translateY(2px);
+        }
+
+        .droneButton {
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #000000;
+        background-color: rgb(245, 245, 245);
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 6px #dedede;
+        }
+
+        .droneButton:hover {background-color: rgb(253, 253, 253)}
+
+        .droneButton:active {
+        background-color: rgb(182, 182, 182);
+        box-shadow: 0 5px rgb(146, 146, 146);
+        transform: translateY(2px);
+        }
+
+        .rechargerDroneButton {
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #522424;
+        background-color: lightcoral;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 6px #6c3636;
+        }
+
+        .rechargerDroneButton:hover {background-color: lightpink}
+
+        .rechargerDroneButton:active {
+        background-color: rgb(165, 90, 90);
+        box-shadow: 0 5px maroon;
+        transform: translateY(2px);
+        }
     </style>
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/WSApi.js"></script>
@@ -67,8 +151,10 @@
             </div>
         </div>
     </div>
-    <div><input type="button" value="Schedule Trip" onclick="schedule()"></div>
-    <div><input type="button" value="Add Human" onclick="addHuman()" style="margin-top: 10px;"></div>
+    <div><input type="button" class = "scheduleButton" value="Schedule Trip" onclick="schedule()"></div>
+    <div><input type="button" class = "humanButton" value="Add Human" onclick="addHuman()" style="margin-top: 10px;"></div>
+    <div><input type="button" class = "droneButton" value="Add Drone" onclick="addDrone()" style="margin-top: 10px;"></div>
+    <div><input type="button" class = "rechargerDroneButton" value="Add Recharger Drone" onclick="addRechargerDrone()" style="margin-top: 10px;"></div>
 
     <div id="nameError"></div>
 
@@ -183,6 +269,38 @@
                 "offset": [0, -0.5, 0]
             });
             humanID += 1;
+        }
+
+        var rechargerDroneID = 3;
+        function addRechargerDrone() {
+            api.sendCommand("CreateEntity", {
+                "type": "rechargerDrone",
+                "name": "Recharger Drone " + rechargerDroneID,
+                "mesh": "assets/model/red_drone.glb",
+                "position": [100, 300, -228.623],
+                "scale": [0.1, 0.1, 0.1],
+                "rotation": [0, 0, 0, 0],
+                "direction": [1,0,0],
+                "speed": 30.0,
+                "offset": [0, 1.5, 0]
+            });
+            rechargerDroneID += 1;
+        }
+
+        var droneID = 2;
+        function addDrone() {
+            api.sendCommand("CreateEntity", {
+                "type": "drone",
+                "name": "Drone " + droneID,
+                "mesh": "assets/model/drone.glb",
+                "position": [650, 300, -228.623],
+                "scale": [0.1, 0.1, 0.1],
+                "rotation": [0, 0, 0, 0],
+                "direction": [1,0,0],
+                "speed": 30.0,
+                "offset": [0, 1.5, 0]
+            });
+            droneID += 1;
         }
     </script>
 </body>

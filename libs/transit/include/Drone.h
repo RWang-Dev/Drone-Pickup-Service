@@ -5,6 +5,7 @@
 
 #include "IEntity.h"
 #include "IStrategy.h"
+#include "RechargerDrone.h"
 #include "math/vector3.h"
 
 // Represents a drone in a physical system.
@@ -119,6 +120,16 @@ class Drone : public IEntity {
    */
   void Jump(double height);
 
+   /**
+   * @brief Notifies all recharger drones 
+   */
+
+  void alertRechargerDrones();
+  /* Extra comments:
+  /* loop through vector of red drones, checks which red drone is closest and available
+  /* Closest red drone: Call red->alert("true") -> starts moving toward drone that needs to be recharged, gets Singleton object, proportion of true and false notifications
+  /* All other drones: Call red->alert("false") -> gets Singleton object, writes data to a vector
+
   /**
    * @brief Removing the copy constructor and assignment operator
    * so that drones cannot be copied.
@@ -140,6 +151,7 @@ class Drone : public IEntity {
   IEntity* nearestEntity = nullptr;
   IStrategy* toRobot = nullptr;
   IStrategy* toFinalDestination = nullptr;
+  std::vector<RechargerDrone*> rechargerDroneLists;
 };
 
 #endif
