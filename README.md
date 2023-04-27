@@ -10,6 +10,8 @@ Calvin Theis, theis530
 ## Project Overview
 
 ## How to Run the Simulation
+In order to run the simulation, first git clone this repository. Then, cd into the project directory.  
+In order to build the project, type ```make -j``` in the terminal. To run the project, type 
 
 ## What the Simulation Does
 
