@@ -1,6 +1,6 @@
 #include "BatteryDecorator.h"
-#include "Reservice.h"
 #include "RechargerDrone.h"
+#include "Reservice.h"
 #define _USE_MATH_DEFINES
 
 #include <cmath>
@@ -19,32 +19,35 @@ BatteryDecorator::BatteryDecorator(IEntity* ent) {
   outOfBattery = false;
 }
 
-BatteryDecorator::~BatteryDecorator() {
-  delete drone;
-}
+BatteryDecorator::~BatteryDecorator() { delete drone; }
 
-void BatteryDecorator::Update(double dt, std::vector<IEntity*> scheduler) {
-    // std::cout << battery << std::endl;
-    if (outOfBattery == false) {
-      drone->Update(dt, scheduler);
-      if (drone->GetAvailability() == false) {
-        battery -= 2*dt;
-        // std::cout << drone->GetId() << " Battery level: " << battery << std::endl;
-      }
-      else {
-        battery -= dt;
-      }
-
-      if (battery <= 0) {
-        outOfBattery = true;
-        // Call reservice's FindNearestAvailableRechargerDrone function once
-        Reservice* mediator = Reservice::GetInstance();
-        rDrone = mediator->FindNearestAvailableRechargerDrone(this);
-      }
+void BatteryDecorator::Update(double dt, std::vector<IEntity *> scheduler) {
+  // std::cout << battery << std::endl;
+  TripData *trip = drone->GetTripData();
+  if (outOfBattery == false) {
+    drone->Update(dt, scheduler);
+    if (drone->GetAvailability()) {
+      battery -= dt;
+      if (trip)
+        drone->GetTripData()->batteryUsed += dt;
+      // std::cout << drone->GetId() << " Battery level: " << battery <<
+      // std::endl;
     } else {
-        if (rDrone->GetFinishedRechargingDrone() == true) {
-          outOfBattery = false;
-          rDrone = nullptr;
-        }
+      battery -= 2 * dt;
+      if (trip)
+        drone->GetTripData()->batteryUsed += 2 * dt;
     }
+
+    if (battery <= 0) {
+      outOfBattery = true;
+      // Call reservice's FindNearestAvailableRechargerDrone function once
+      Reservice *mediator = Reservice::GetInstance();
+      rDrone = mediator->FindNearestAvailableRechargerDrone(this);
+    }
+  } else if (rDrone->GetFinishedRechargingDrone() == true) {
+    outOfBattery = false;
+    rDrone = nullptr;
+    if (trip)
+      trip->recharges++;
+  }
 }

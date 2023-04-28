@@ -1,3 +1,4 @@
+#include "TripData.h"
 #define _USE_MATH_DEFINES
 #include "Drone.h"
 
@@ -10,6 +11,7 @@
 #include "DijkstraStrategy.h"
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
+#include "DataCollection.h"
 
 Drone::Drone(JsonObject& obj) : details(obj) {
   JsonArray pos(obj["position"]);
@@ -54,6 +56,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
     toRobot = new BeelineStrategy(position, destination);
 
     std::string strat = nearestEntity->GetStrategyName();
+    trip->routingAlgorithm = strat;
     if (strat == "astar")
       toFinalDestination =
         new JumpDecorator(new AstarStrategy(destination, finalDestination, graph));
@@ -89,11 +92,21 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
     }
 
     if (toFinalDestination->IsCompleted()) {
+      // Trip ends. Store trip data and reset current trip data
+      DataCollection *dc = DataCollection::GetInstance();
+      dc->AddTrip(trip);
+      trip = new TripData();
+      trip->droneId = this->id;
+      trip->distanceTraveled = 0;
+      trip->recharges = 0;
+      trip->batteryUsed = 0;
+
       delete toFinalDestination;
       toFinalDestination = nullptr;
       nearestEntity = nullptr;
       available = true;
       pickedUp = false;
+
     }
   }
 }
