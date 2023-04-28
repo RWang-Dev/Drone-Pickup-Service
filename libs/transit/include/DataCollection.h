@@ -5,7 +5,6 @@
 #include <list>
 
 #include "TripData.h"
-#include "Drone.h"
 
 /** 
  * Singleton class for collecting data about each trip that occurs during the
