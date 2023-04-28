@@ -8,7 +8,6 @@
 #include "IEntity.h"
 #include "IStrategy.h"
 #include "DijkstraStrategy.h"
-#include "RechargerDrone.h"
 #include "math/vector3.h"
 
 using namespace std::this_thread; // sleep_for, sleep_until
