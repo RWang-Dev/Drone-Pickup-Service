@@ -7,6 +7,10 @@
 #include "IStrategy.h"
 #include "RechargerDrone.h"
 #include "math/vector3.h"
+#include "TripData.h"
+#include "DataCollection.h"
+
+class DataCollection;
 
 // Represents a drone in a physical system.
 // Drones move using euler integration based on a specified
@@ -76,6 +80,12 @@ class Drone : public IEntity {
    * @param scheduler Vector containing all the entities in the system
    */
   void GetNearestEntity(std::vector<IEntity*> scheduler);
+
+  /**
+   * @brief Gets the TripData pointer
+   * @return TripData object pointer
+   */
+  TripData* GetTripData() {return tripData;}
 
   /**
    * @brief Updates the drone's position
@@ -152,6 +162,8 @@ class Drone : public IEntity {
   IStrategy* toRobot = nullptr;
   IStrategy* toFinalDestination = nullptr;
   std::vector<RechargerDrone*> rechargerDroneLists;
+  TripData* tripData = new TripData();
+  DataCollection* dc;
 };
 
 #endif

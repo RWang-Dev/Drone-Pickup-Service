@@ -4,6 +4,9 @@
 #include "IEntity.h"
 #include "IStrategy.h"
 #include "RechargerDrone.h"
+#include "DataCollection.h"
+#include "TripData.h"
+#include "Drone.h"
 
 /**
  * @brief this class inhertis from the IStrategy class and is represents
@@ -87,7 +90,9 @@ class BatteryDecorator : public IEntity {
   float battery;
   bool outOfBattery;
   IEntity* drone;
+  Drone* dronePtr;
   RechargerDrone* rDrone;
+  DataCollection* dc;
 };
 
 

@@ -20,12 +20,12 @@ DataCollection* DataCollection::GetInstance() {
 std::string DataCollection::GetTripCSV(struct TripData* trip) {
   std::stringstream csv; // Use of sstream allows for advanced float formatting
 
-  csv << trip->tripId << ",";
-  csv << trip->droneId << ",";
-  csv << trip->distanceTraveled << ",";
-  csv << trip->routingAlgorithm << ",";
-  csv << trip->batteryUsed << ",";
-  csv << trip->recharges;
+  csv << trip->getTripID() << ",";
+  csv << trip->getDroneID() << ",";
+  csv << trip->getDistanceTraveled() << ",";
+  csv << trip->getRoutingAlgorithm() << ",";
+  csv << trip->getBatteryUsed() << ",";
+  csv << trip->getRecharges();
   
   return csv.str();
 }
@@ -33,9 +33,9 @@ std::string DataCollection::GetTripCSV(struct TripData* trip) {
 void DataCollection::AddTrip(struct TripData *trip) {
   trips.push_back(trip);
 
-  totalDistance += trip->distanceTraveled;
-  totalRecharges += trip->recharges;
-  totalBatteryUsage += trip->batteryUsed;
+  totalDistance += trip->getDistanceTraveled();
+  totalRecharges += trip->getRecharges();
+  totalBatteryUsage += trip->getBatteryUsed();
   currentTripId++;
 } 
 
