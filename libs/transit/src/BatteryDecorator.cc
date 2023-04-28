@@ -1,6 +1,7 @@
 #include "BatteryDecorator.h"
 #include "RechargerDrone.h"
 #include "Reservice.h"
+#include "DataCollection.h"
 #define _USE_MATH_DEFINES
 
 #include <cmath>
@@ -17,25 +18,39 @@ BatteryDecorator::BatteryDecorator(IEntity* ent) {
   this->drone = ent;
   battery = 100;
   outOfBattery = false;
+  this->dronePtr = (Drone*)ent;
+  dc = DataCollection::GetInstance();
 }
 
 BatteryDecorator::~BatteryDecorator() { delete drone; }
 
-void BatteryDecorator::Update(double dt, std::vector<IEntity *> scheduler) {
-  // std::cout << battery << std::endl;
-  TripData *trip = drone->GetTripData();
-  if (outOfBattery == false) {
-    drone->Update(dt, scheduler);
-    if (drone->GetAvailability()) {
-      battery -= dt;
-      if (trip)
-        drone->GetTripData()->batteryUsed += dt;
-      // std::cout << drone->GetId() << " Battery level: " << battery <<
-      // std::endl;
+void BatteryDecorator::Update(double dt, std::vector<IEntity*> scheduler) {
+    if (outOfBattery == false) {
+      drone->Update(dt, scheduler);
+      if (drone->GetAvailability() == false) {
+        battery -= 2*dt;
+        // drone = dynamic_cast<Drone*>(drone);
+        dronePtr->GetTripData()->IncreaseBatteryUsed(2*dt);
+        dc->IncreaseTotalBatUsage(2*dt);
+      }
+      else {
+        battery -= dt;
+        dronePtr->GetTripData()->IncreaseBatteryUsed(dt);
+        dc->IncreaseTotalBatUsage(dt);
+      }
+
+      if (battery <= 0) {
+        outOfBattery = true;
+        Reservice* mediator = Reservice::GetInstance();
+        rDrone = mediator->FindNearestAvailableRechargerDrone(this);
+      }
     } else {
-      battery -= 2 * dt;
-      if (trip)
-        drone->GetTripData()->batteryUsed += 2 * dt;
+        if (rDrone->GetFinishedRechargingDrone() == true) {
+          dronePtr->GetTripData()->IncrementRecharges();
+          dc->IncrementTotalRecharges();
+          outOfBattery = false;
+          rDrone = nullptr;
+        }
     }
 
     if (battery <= 0) {

@@ -12,6 +12,7 @@
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
 #include "DataCollection.h"
+#include "TripData.h"
 
 Drone::Drone(JsonObject& obj) : details(obj) {
   JsonArray pos(obj["position"]);
@@ -22,6 +23,13 @@ Drone::Drone(JsonObject& obj) : details(obj) {
   speed = obj["speed"];
 
   available = true;
+
+  dc = DataCollection::GetInstance(); 
+
+  dc->IncrementDroneNum();
+
+  tripData->setDroneID(dc->GetDroneNum());
+  // tripData->SetTripID(dc)
 }
 
 Drone::~Drone() {
@@ -56,18 +64,25 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
     toRobot = new BeelineStrategy(position, destination);
 
     std::string strat = nearestEntity->GetStrategyName();
-    trip->routingAlgorithm = strat;
-    if (strat == "astar")
+    if (strat == "astar") {
       toFinalDestination =
         new JumpDecorator(new AstarStrategy(destination, finalDestination, graph));
-    else if (strat == "dfs")
+        tripData->setRoutingAlgorithm("astar");
+    }
+    else if (strat == "dfs") {
       toFinalDestination =
         new SpinDecorator(new JumpDecorator(new DfsStrategy(destination, finalDestination, graph)));
-    else if (strat == "dijkstra")
+        tripData->setRoutingAlgorithm("dfs");
+    }
+    else if (strat == "dijkstra") {
       toFinalDestination =
         new JumpDecorator(new SpinDecorator(new DijkstraStrategy(destination, finalDestination, graph)));
-    else
+        tripData->setRoutingAlgorithm("dijkstra");
+    }
+    else {
       toFinalDestination = new BeelineStrategy(destination, finalDestination);
+      tripData->setRoutingAlgorithm("beeline");
+    }
   }
 }
 
@@ -77,6 +92,7 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
 
   if (toRobot) {
     toRobot->Move(this, dt);
+    dc->IncreaseTotalDistance(speed*dt);
 
     if (toRobot->IsCompleted()) {
       delete toRobot;
@@ -92,21 +108,14 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
     }
 
     if (toFinalDestination->IsCompleted()) {
-      // Trip ends. Store trip data and reset current trip data
-      DataCollection *dc = DataCollection::GetInstance();
-      dc->AddTrip(trip);
-      trip = new TripData();
-      trip->droneId = this->id;
-      trip->distanceTraveled = 0;
-      trip->recharges = 0;
-      trip->batteryUsed = 0;
-
+      dc->IncrementTripID();
       delete toFinalDestination;
       toFinalDestination = nullptr;
       nearestEntity = nullptr;
       available = true;
       pickedUp = false;
-
+      dc->AddTrip(tripData);
+      tripData = new TripData();
     }
   }
 }
