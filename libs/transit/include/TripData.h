@@ -15,6 +15,13 @@ class TripData {
   int recharges = 0;                // Number of times the drone needed to be recharged
   float batteryUsed = 0;            // Percentage of battery used during this trip, not counting recharges
  public:
+
+  TripData() {}
+
+  // TripData(int tId, int dId, float distTrav, std::string routAlg, int rech, float battUsage) 
+  //   : tripId(tId), droneId(dId),  distanceTraveled(distTrav), routingAlgorithm(routAlg), 
+  //     recharges(rech), batteryUsed(battUsage) {}
+
   /**
     * @brief Gets distanceTraveled
     * @return Distance traveled during this trip
@@ -82,9 +89,9 @@ class TripData {
   void IncreaseBatteryUsed(float batUsed) { batteryUsed += batUsed;}
 
   /**
-  * @brief Increments trip ID
+  * @brief sets Trip ID
   */
-  void IncrementTripID() {tripId += 1;}
+  void SetTripID(int tID) {tripId = tID;}
   
 
 };

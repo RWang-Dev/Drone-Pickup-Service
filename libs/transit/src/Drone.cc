@@ -1,4 +1,3 @@
-#include "TripData.h"
 #define _USE_MATH_DEFINES
 #include "Drone.h"
 
@@ -29,7 +28,7 @@ Drone::Drone(JsonObject& obj) : details(obj) {
   dc->IncrementDroneNum();
 
   tripData->setDroneID(dc->GetDroneNum());
-  // tripData->SetTripID(dc)
+  tripData->SetTripID(dc->GetTripId());
 }
 
 Drone::~Drone() {

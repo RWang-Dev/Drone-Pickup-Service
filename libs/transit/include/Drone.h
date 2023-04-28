@@ -8,7 +8,6 @@
 #include "RechargerDrone.h"
 #include "TripData.h"
 #include "math/vector3.h"
-#include "TripData.h"
 #include "DataCollection.h"
 
 class DataCollection;
@@ -80,7 +79,7 @@ public:
    * @brief Gets a pointer to the drone's current TripData
    * @return The pointer to a TripData object representing the current trip
    */
-  TripData *GetTripData() const { return trip; }
+  TripData *GetTripData() const { return tripData; }
 
   /**
    * @brief Gets the nearest entity in the scheduler
@@ -129,7 +128,7 @@ public:
    * @brief Sets a new TripData object to track the current trip
    * @param trip_ The pointer to the new TripData object
    */
-  void SetTripData(TripData *trip_) { trip = trip_; }
+  void SetTripData(TripData *trip_) { tripData = trip_; }
 
   /**
    * @brief Rotates the drone

@@ -54,19 +54,41 @@ class DataCollection {
   bool OutputCSVFile();
 
   /**
-   * @brief Set 
+   * @brief Increase total distance var
+   * @param dist Amount to increase distance by 
    */
   void IncreaseTotalDistance(float dist) {totalDistance += dist;}
 
+  /**
+   * @brief Increase total battery usage var
+   * @param batAmt amount to increase battery usage by 
+   */
   void IncreaseTotalBatUsage(float batAmt) {totalBatteryUsage += batAmt;}
 
+  /**
+   * @brief Increase total reacharges var by 1 
+   */
   void IncrementTotalRecharges() {totalRecharges += 1;}
 
+  /**
+   * @brief Increase trip number var by 1
+   */
   void IncrementTripID() {currentTripId += 1;}
 
+  /**
+   * @brief Increase drone number by 1
+   */
   void IncrementDroneNum() {droneNum += 1;}
 
+  /**
+   * @brief Returns number of drones
+   */
   int GetDroneNum() {return droneNum;}
+
+  /**
+   * @brief Returns current trip id
+   */
+  int GetTripId() {return currentTripId;}
   
 };
 
