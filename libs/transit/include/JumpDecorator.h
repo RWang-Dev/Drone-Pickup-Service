@@ -28,7 +28,7 @@ class JumpDecorator : public CelebrationDecorator {
    * @param entity Entity to move
    * @param dt Delta Time
    */
-  virtual void Move(IEntity* entity, double dt);
+  virtual void Move(IEntity* entity, double dt) override;
 };
 
 #endif  // JUMP_DECORATOR_H_

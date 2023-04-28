@@ -80,14 +80,14 @@ class IEntity {
    * @brief Gets the availability of the entity.
    * @return The availability of the entity.
    */
-  virtual bool GetAvailability() const {}
+  virtual bool GetAvailability() const { return false; }
 
   /**
    * @brief Get the Strategy Name
    *
    * @return Streategy name
    */
-  virtual std::string GetStrategyName() const {}
+  virtual std::string GetStrategyName() const { return ""; }
 
   /**
    * @brief Set the Strategy Name

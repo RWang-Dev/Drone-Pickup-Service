@@ -26,7 +26,7 @@ class PathStrategy : public IStrategy {
    * @param entity Entity to move
    * @param dt Delta Time
    */
-  virtual void Move(IEntity* entity, double dt);
+  virtual void Move(IEntity* entity, double dt) override;
 
   /**
    * @brief Check if the trip is completed by seeing if index 
@@ -34,7 +34,7 @@ class PathStrategy : public IStrategy {
    *
    * @return True if complete, false if not complete
    */
-  virtual bool IsCompleted();
+  virtual bool IsCompleted() override;
 };
 
 #endif  // PATH_STRATEGY_H_
