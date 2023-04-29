@@ -14,13 +14,14 @@ https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley
 
 
 ## Project Overview
-This project is a drone simulation system that takes place on the University of Minnesota campus. The user is able to schedule trips by setting the pickup location and final destination of a robot. A drone will then pick up the robot and bring it to its destination. Each drone also has a battery life that is decremented over the course of the simulation. Special drones exist to recharge drones that run out of battery. Lastly, information about every trip is recorded in order for analysis throughout the simulation.
+This project is a drone simulation system that takes place on the University of Minnesota campus. The user is able to schedule trips by setting the pickup location and final destination of a robot. A drone will then pick up the robot and bring it to its destination. Each drone also has a battery life that is decremented over the course of the simulation. When the drone runs out of battery, a special recharger drone will fly to the drone and charge its battery back up to 100%. Lastly, the user can also collect information on all completed trips in the simulation by pressing a button that outputs a CSV file.
 
 ## How to Run the Simulation
 
 ### Git: 
 In order to run the simulation, first git clone this repository. Then, cd into the project directory.  
 In order to build the project, type ```make -j``` in the terminal. To run the project, type ```./build/bin/transit_service 8081 apps/transit_service/web/``` in the terminal.  
+
 Navigate to http://127.0.0.1:8081 and you should see a visualization.  
 Navigate to http://127.0.0.1:8081/schedule.html and you should see a page to schedule the trips.  
 *Note: 8081 will depends on what port you used. If you use port 8082, then it will be http://127.0.0.1:8082 instead.*
@@ -29,10 +30,10 @@ Navigate to http://127.0.0.1:8081/schedule.html and you should see a page to sch
 (note this needs to be checked)
 Pull the docker image with ```docker pull <image_name>```
 Next, run the image with ```docker run --rm -it -p <local_port>:<container_port> <image_name>```
-From there, you are free to navigate to the websites listed above in the Git section.
+From there, you are free to navigate to the website links listed above in the Git section.
 
 ## What the Simulation Does
-When the user schedules a trip for the drone to pick up and bring a robot to a specified destination, they can also choose which routing algorithm will be used to reach that location (E.g. A*, Depth first search, Dijkstra's). This routing algorithm determines how the drone will navigate through the streets of the city. Once the user has scheduled a trip, the closest available (not already assigned to a robot) drone will be assigned to and start heading directly towards the newly created robot. The drone will then navigate to the final destination using whatever routing algorithm is determined by the user. Throughout the trip, the drone may run out of battery and stop moving. If this happens, a special recharge drone will head directly to the dead drone in order to recharge it. The drone will resume movement upon a full battery. After reaching the final destination, the drone then becomes available for the next trip. For every trip, drones collect data about the trips like distance traveled, battery usage, and etc. At the end of every trip, drones saves this information in order to be outputted and analyzed later.
+When the user schedules a trip for the drone to pick up and bring a robot to a specified destination, they will also choose the routing algorithm that will be used by the drone to reach that location (E.g. A*, Depth first search, Dijkstra's). Once the trip has been successfully scheduled, the nearest available (not already assigned to a robot) drone will be assigned to the newly created robot and will start flying directly towards it. Then, the drone will navigate to the final destination using the chosen routing algorithm. Because the drone's battery is constantly decremented throughout the simulation, the drone may run out of battery and stop moving in the middle of a trip. When this occurs, the closest available (not already assigned to recharging a drone) recharger drone will head directly to the dead drone. Once the recharger drone reaches the dead drone, the drone will immediately resume movement after being fully recharged by the recharger drone. After the drone reaches the final destination and drops off the robot, the drone then becomes available for the next trip. For each completed trip, the drone that completed it will collect data pertaining to battery usage, distance traveled, routing algorithm, etc. This information is saved and made readily available for outputting and analyzing.
 
 ## New Features
 ### Feature 1: Battery and Recharge
