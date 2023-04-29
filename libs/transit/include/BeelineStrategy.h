@@ -24,14 +24,14 @@ class BeelineStrategy : public IStrategy {
    * @param entity Entity to move
    * @param dt Delta Time
    */
-  void Move(IEntity* entity, double dt);
+  void Move(IEntity* entity, double dt) override; 
 
   /**
    * @brief Check if the trip is completed
    *
    * @return True if complete, false if not complete
    */
-  bool IsCompleted();
+  bool IsCompleted() override;
 
  private:
   Vector3 position;

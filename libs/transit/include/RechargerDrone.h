@@ -8,7 +8,6 @@
 #include "IEntity.h"
 #include "IStrategy.h"
 #include "DijkstraStrategy.h"
-#include "RechargerDrone.h"
 #include "math/vector3.h"
 
 using namespace std::this_thread; // sleep_for, sleep_until
@@ -39,37 +38,37 @@ class RechargerDrone : public IEntity {
    * @brief Gets the speed of the Recharger drone
    * @return The speed of the Recharger drone
    */
-  float GetSpeed() const { return speed; }
+  float GetSpeed() const override { return speed; }
 
   /**
    * @brief Gets the position of the Recharger drone
    * @return The position of the Recharger drone
    */
-  Vector3 GetPosition() const { return position; }
+  Vector3 GetPosition() const override { return position; }
 
   /**
    * @brief Gets the direction of the Recharger drone
    * @return The direction of the Recharger drone
    */
-  Vector3 GetDirection() const { return direction; }
+  Vector3 GetDirection() const override { return direction; }
 
   /**
    * @brief Gets the destination of the Recharger drone
    * @return The destination of the Recharger drone
    */
-  Vector3 GetDestination() const { return destination; }
+  Vector3 GetDestination() const override { return destination; }
 
   /**
    * @brief Gets the details information of the Recharger drone
    * @return The details information of the Recharger drone
    */
-  JsonObject GetDetails() const { return details; }
+  JsonObject GetDetails() const override { return details; }
 
   /**
    * @brief Gets the availability of the Recharger drone
    * @return The availability of the Recharger drone
    */
-  bool GetAvailability() const { return available; }
+  bool GetAvailability() const override { return available; }
 
   /**
    * @brief Gets the boolean for if drone has been finished recharing
@@ -82,25 +81,25 @@ class RechargerDrone : public IEntity {
    * @param dt Delta time
    * @param scheduler Vector containing all the entities in the system
    */
-  void Update(double dt, std::vector<IEntity*> scheduler);
+  void Update(double dt, std::vector<IEntity*> scheduler) override;
 
   /**
    * @brief Sets the position of the Recharger drone
    * @param pos_ The new position of the Recharger drone
    */
-  void SetPosition(Vector3 pos_) { position = pos_; }
+  void SetPosition(Vector3 pos_) override { position = pos_; }
 
   /**
    * @brief Sets the direction of the Recharger drone
    * @param dir_ The new direction of the Recharger drone
    */
-  void SetDirection(Vector3 dir_) { direction = dir_; }
+  void SetDirection(Vector3 dir_) override { direction = dir_; }
 
   /**
    * @brief Sets the destination of the Recharger drone
    * @param des_ The new destination of the Recharger drone
    */
-  void SetDestination(Vector3 des_) { destination = des_; }
+  void SetDestination(Vector3 des_) override { destination = des_; }
 
   /**
    * @brief Sets the droneToRecharge variable to drone pointer, destination variable to 

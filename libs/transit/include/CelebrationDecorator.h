@@ -32,14 +32,14 @@ class CelebrationDecorator : public IStrategy {
    * @param entity Entity to move
    * @param dt Delta Time
    */
-  virtual void Move(IEntity* entity, double dt) = 0;
+  virtual void Move(IEntity* entity, double dt) override = 0;
 
   /**
    * @brief Check if the movement is completed by checking the time.
    *
    * @return True if complete, false if not complete
    */
-  virtual bool IsCompleted();
+  virtual bool IsCompleted() override;
 };
 
 #endif  // CELEBRATION_DECORATOR_H_

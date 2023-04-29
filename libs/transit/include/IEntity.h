@@ -3,6 +3,7 @@
 
 #include <vector>
 
+#include "TripData.h"
 #include "graph.h"
 #include "math/vector3.h"
 #include "util/json.h"
@@ -80,14 +81,21 @@ class IEntity {
    * @brief Gets the availability of the entity.
    * @return The availability of the entity.
    */
-  virtual bool GetAvailability() const {}
+  virtual bool GetAvailability() const { return false; }
 
   /**
    * @brief Get the Strategy Name
    *
-   * @return Streategy name
+   * @return Strategy name
    */
-  virtual std::string GetStrategyName() const {}
+  virtual std::string GetStrategyName() const { return ""; }
+
+  /**
+   * @brief Get the a pointer to the current trip data
+   *
+   * @return The pointer to the trip data
+   */
+  virtual TripData* GetTripData() { return nullptr; }
 
   /**
    * @brief Set the Strategy Name
@@ -138,6 +146,12 @@ class IEntity {
    * @param col_ The new color of the drone
    */
   virtual void SetColor(std::string col_) {}
+
+  /**
+   * @brief Sets the TripData pointed to for the current trip.
+   * @param trip_ The TripData pointer
+   */
+  virtual void SetTripData(TripData* _trip) {}
 
   /**
    * @brief Rotate the entity.

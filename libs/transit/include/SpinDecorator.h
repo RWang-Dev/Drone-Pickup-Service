@@ -28,7 +28,7 @@ class SpinDecorator : public CelebrationDecorator {
    * @param entity Entity to move
    * @param dt Delta Time
    */
-  virtual void Move(IEntity* entity, double dt);
+  virtual void Move(IEntity* entity, double dt) override;
 };
 
 #endif  // SPIN_DECORATOR_H_

@@ -14,7 +14,7 @@ class CompositeFactory : public IEntityFactory {
    * @return Entity that was created if it was created successfully, or a
    *nullpointer if creation failed.
    **/
-  IEntity* CreateEntity(JsonObject& entity);
+  IEntity* CreateEntity(JsonObject& entity) override;
 
   /**
    * @brief Adds given factory
