@@ -3,6 +3,7 @@
 #include "WebServer.h"
 #include "SimulationModel.h"
 #include "routing_api.h"
+#include "DataCollection.h"
 
 //--------------------  Controller ----------------------------
 
@@ -24,6 +25,10 @@ public:
         }
         else if (cmd == "ScheduleTrip") {
             model.ScheduleTrip(data);
+        }
+        else if (cmd == "OutputCSVFile") {
+            DataCollection* dc = DataCollection::GetInstance();
+            dc->OutputCSVFile();
         }
         else if (cmd == "ping") {
             returnValue["response"] = data;
