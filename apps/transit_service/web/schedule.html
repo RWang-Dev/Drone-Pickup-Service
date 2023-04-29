@@ -119,6 +119,27 @@
         box-shadow: 0 5px maroon;
         transform: translateY(2px);
         }
+
+        .outputCSVButton {
+        padding: 10px 20px;
+        font-size: 16px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #1c0c1f;
+        background-color: rgb(224, 177, 255);
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 6px #dc97e7;
+        }
+
+        .outputCSVButton:hover {background-color: rgb(242, 200, 255)}
+
+        .outputCSVButton:active {
+        background-color: rgb(134, 92, 162);
+        box-shadow: 0 5px rgb(160, 125, 162);
+        transform: translateY(2px);
+        }
     </style>
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/WSApi.js"></script>
@@ -155,6 +176,7 @@
     <div><input type="button" class = "humanButton" value="Add Human" onclick="addHuman()" style="margin-top: 10px;"></div>
     <div><input type="button" class = "droneButton" value="Add Drone" onclick="addDrone()" style="margin-top: 10px;"></div>
     <div><input type="button" class = "rechargerDroneButton" value="Add Recharger Drone" onclick="addRechargerDrone()" style="margin-top: 10px;"></div>
+    <div><input type="button" class = "outputCSVButton" value="Output CSV File" style="margin-top: 10px;"></div>
 
     <div id="nameError"></div>
 
