@@ -16,6 +16,12 @@ class TripData {
   float batteryUsed = 0;            // Percentage of battery used during this trip, not counting recharges
  public:
 
+
+  /**
+ * @class TripData
+ * @brief Stores the important data for each trip, which will help in the data collection organization
+ *
+ */
   TripData() {}
 
   // TripData(int tId, int dId, float distTrav, std::string routAlg, int rech, float battUsage) 
@@ -30,7 +36,7 @@ class TripData {
 
   /**
     * @brief Gets routingAlgorithm
-    * @return Routing algorithm used during this trip
+    * @return String: Routing algorithm used during this trip
     */
   std::string getRoutingAlgorithm() {return routingAlgorithm;}
 
@@ -41,7 +47,7 @@ class TripData {
   float getRecharges() {return recharges;}
 
   /**
-    * @brief Sets batteryUsed
+    * @brief Gets batteryUsed
     * @return Percentage of battery used during this trip, not counting recharges
     */
   float getBatteryUsed() {return batteryUsed;}
@@ -59,14 +65,14 @@ class TripData {
   int getDroneID() {return droneId;}
 
     /**
-    * @brief Sets distanceTraveled
+    * @brief Increases the distances traveled by a certain amount
     * @param dist distance traveled during this trip
     */
   void IncreaseDistanceTraveled(float dist) {distanceTraveled += dist;}
 
   /**
-    * @brief Sets routingAlgorithm
-    * @param Routing algorithm used during this trip
+    * @brief Sets the routing algorithm of this trip
+    * @param routAlg algorithm used during this trip
     */
   void setRoutingAlgorithm(std::string routAlg) {routingAlgorithm = routAlg;}
   
@@ -77,19 +83,19 @@ class TripData {
   void setDroneID(int droneID) {this->droneId = droneID;}
 
   /**
-    * @brief Increment recharges
-    * @param Number of times the drone needed to be recharged
+    * @brief Increment the number of recharges during this trip by 1
     */
   void IncrementRecharges() {recharges += 1;}
 
   /**
     * @brief Sets batteryUsed
-    * @param Percentage of battery used during this trip, not counting recharges
+    * @param batUsed of battery used during this trip, not counting recharges
     */
   void IncreaseBatteryUsed(float batUsed) { batteryUsed += batUsed;}
 
   /**
   * @brief sets Trip ID
+  * @param tID the unique identifier ID of this trip
   */
   void SetTripID(int tID) {tripId = tID;}
   

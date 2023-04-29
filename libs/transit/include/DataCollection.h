@@ -7,7 +7,8 @@
 #include "TripData.h"
 
 /** 
- * Singleton class for collecting data about each trip that occurs during the
+ * @class Data Collection
+ * @brief Singleton class for collecting data about each trip that occurs during the
  * simulation.
  */
 class DataCollection { 
@@ -54,19 +55,19 @@ class DataCollection {
   bool OutputCSVFile();
 
   /**
-   * @brief Increase total distance var
-   * @param dist Amount to increase distance by 
+   * @brief Increases the total distance traveled by entities in current simulation
+   * @param dist Amount to increase the total distance by 
    */
   void IncreaseTotalDistance(float dist) {totalDistance += dist;}
 
   /**
-   * @brief Increase total battery usage var
-   * @param batAmt amount to increase battery usage by 
+   * @brief Increase the total battery usage of entities in current simulation
+   * @param batAmt amount to increase the total battery usage by 
    */
   void IncreaseTotalBatUsage(float batAmt) {totalBatteryUsage += batAmt;}
 
   /**
-   * @brief Increase total reacharges var by 1 
+   * @brief Increases the number of total recharges by 1
    */
   void IncrementTotalRecharges() {totalRecharges += 1;}
 
@@ -76,17 +77,19 @@ class DataCollection {
   void IncrementTripID() {currentTripId += 1;}
 
   /**
-   * @brief Increase drone number by 1
+   * @brief Increase drone number by 1, which will keep track of a drone ID essentially
    */
   void IncrementDroneNum() {droneNum += 1;}
 
   /**
    * @brief Returns number of drones
+   * @return int: the current number of drones on screen
    */
   int GetDroneNum() {return droneNum;}
 
   /**
    * @brief Returns current trip id
+   * @return int: the current trip IF
    */
   int GetTripId() {return currentTripId;}
   
