@@ -45,7 +45,7 @@ Our first extension uses the Decorator, Mediator, and Singleton design patterns 
 This feature creates a more realistic simulation as drones cannot have infinite battery life in real life. We can simulate the performance of different battery lives and observe how much time is sacrificed as a result of including recharge time. 
 
 #### How does it add to the existing work?
-All drones now have a battery decorator that wraps around the actual drone entity. The battery decorator applies battery logic and functionalities to the drone. Now, when the update function is called on the drone that is wrapped by a battery decorator, the value associated with the battery variable will be decreased each frame. Once the battery runs out (<= 0%), the drone will no longer keep moving. The mediator (Reservice) will be called to find the nearest, available recharger drone. Once found, the recharger drone beelines towards the dead drone and charges it every update cycle until the drone's battery reaches 100%.
+All drones now have a battery decorator that wraps around the actual drone entity. The battery decorator applies battery logic and functionalities to the drone. Now, when the update function is called on the drone that is wrapped by a battery decorator, the value associated with the battery variable will be decreased each update cycle. Once the battery runs out (<= 0%), the drone will no longer keep moving. The mediator (Reservice) will be called to find the nearest, available recharger drone. Once found, the recharger drone beelines towards the dead drone and charges it every update cycle until the drone's battery reaches 100%.
 
 #### Which design patterns are implemented and why?
 The decorator pattern is used to give all transportation drones a battery. The decorator deals with all battery functionalities and logic while keeping the drone's update function intact. This is useful because all battery-related behavior is adjusted in the battery decorator without affecting the base drone's update function. In addition, if you wanted to run the simulation with drones that don't have battery lives, it is easy to do so: In the DroneFactory.cc file, all you need to do is to remove the BatteryDecorator wrapper.
@@ -53,23 +53,23 @@ The decorator pattern is used to give all transportation drones a battery. The d
 The mediator and singleton patterns are used when creating Reservice. This class functions as the intermediary between drones and recharger drones; it is responsible for finding the nearest, available recharger drone when a drone has run out of battery. The mediator design pattern reduces the amount of dependencies between Drone and RechargerDrone, making it easier to modify or extend these classes in the future. Furthermore, the singleton design pattern ensures that only one mediator exists at a time, so no conflicts arise when a dead drone calls the mediator to find the closest, available recharger drone.
 
 #### How to use the new feature
-This feature is not able to be interacted at all by the user directly. It automatically operates as drones move throughout the simulation.
+This battery feature is not able to be interacted at all by the user directly. It automatically operates as drones move throughout the simulation. However, users have the option to add recharger drones by pressing a button on the scheduling webpage.
 
 ### Feature 2: Data Collection
 
 #### What does it do?
-This extension utilizes the Singleton design pattern to collect information about every trip taken by the drones. The information can then be outputted as a CSV file to be inspected and analyzed. Specific trends could be identified in the data to provide more insightful information about the drone's operation.
+Our second extension uses the Singleton design pattern in the creation of a Data Collection class. Through this class, we are able to store data on each successfully completed trip made by the drones. Trip-specific statistics such as distance traveled, routing algorithm used, and amount of battery used, etc. can be outputted as a CSV file on the scheduling webpage by clicking the ```Output CSV File``` button.
 
 #### Why is it significantly interesting?
-As a simulation, it is useful to collect statistics on the trips taken by drones in order to run analysis. With this information, one could optimize the drone routing algorithms or battery life for different situations. 
+With data collected on this simulation, analyses can be made and trends can be observed. More specifically, by experimenting with different combinations of battery lives, battery depletion rates, routing algorithms, and more, we can garner information on how to optimize drone trips.
 
 #### How does it add to the existing work?
-All drones now utilize the TripData class to store information about each trip taken. At the end of every trip, the information is saved to the singleton and the drone gets a new TripData to save information about the next trip. In addition, there is a new button on the schedule html that can output the information stored by the DataCollection singleton as a CSV.
+Each drone entity has access to the single Data Collection instance. In addition, each drone entity now has a TripData object pointer to store data on each individual trip (E.g. distance traveled, routing algorithm used, amount of battery used). After a trip has been completed, the information stored through the TripData pointer is passed to and stored in the Data Collection instance. Lastly, there is a button on the scheduling webpage that allows the user to output the information stored by the DataCollection instance as a CSV file.  
 
 #### Which design patterns are implemented and why?
-The singleton pattern is used to provide all drones with one single data collection object. This ensures that all the information is conveniently collected in one place regardless of how many drones there are in the simulation. 
+The singleton pattern is used to provide all drones with a global access point to one single Data Collection instance. It protects the Data Collection instance from being overwritten elsewhere. Thus, this ensures that all information is collected in one place.  
 
 #### How to use the new feature
-The actual collection of data is unable to be determined by the user directly. In other words, the user cannot determine what data is collected nor how it is outputted. The only way the user can interact with this feature is by pressing the ```Output CSV``` button on the schedule html page. This will output the CSV file for the user to analyze.
+The user can access the data collected throughout the simulation by pressing the ```Output CSV File``` button on the scheduling webpage. This button sends an api command to call the outputCSV function in the DataCollection class which then creates a CSV file in a folder for the user to analyze.
 
 ## Sprint Retrospective
