@@ -26,9 +26,7 @@ Drone::Drone(JsonObject& obj) : details(obj) {
   dc = DataCollection::GetInstance(); 
 
   dc->IncrementDroneNum();
-
-  tripData->setDroneID(dc->GetDroneNum());
-  tripData->SetTripID(dc->GetTripId());
+  droneID = dc->GetDroneNum();
 }
 
 Drone::~Drone() {
@@ -61,6 +59,10 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
     Vector3 finalDestination = nearestEntity->GetDestination();
 
     toRobot = new BeelineStrategy(position, destination);
+    tripData = new TripData();
+    tripData->SetTripID(dc->GetTripId());
+    dc->IncrementTripID();
+    tripData->setDroneID(droneID);
 
     std::string strat = nearestEntity->GetStrategyName();
     if (strat == "astar") {
@@ -91,7 +93,6 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
 
   if (toRobot) {
     toRobot->Move(this, dt);
-    dc->IncreaseTotalDistance(speed*dt);
     tripData->IncreaseDistanceTraveled(speed * dt);
 
     if (toRobot->IsCompleted()) {
@@ -101,7 +102,6 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
     }
   } else if (toFinalDestination) {
     toFinalDestination->Move(this, dt);
-    dc->IncreaseTotalDistance(speed*dt);
     tripData->IncreaseDistanceTraveled(speed * dt);
 
     if (nearestEntity && pickedUp) {
@@ -110,14 +110,12 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
     }
 
     if (toFinalDestination->IsCompleted()) {
-      dc->IncrementTripID();
       delete toFinalDestination;
       toFinalDestination = nullptr;
       nearestEntity = nullptr;
       available = true;
       pickedUp = false;
       dc->AddTrip(tripData);
-      tripData = new TripData();
     }
   }
 }

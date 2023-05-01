@@ -177,6 +177,7 @@ private:
   IStrategy* toRobot = nullptr;
   IStrategy* toFinalDestination = nullptr;
   std::vector<RechargerDrone*> rechargerDroneLists;
+  int droneID;
 
   TripData* tripData = new TripData();
   DataCollection* dc;

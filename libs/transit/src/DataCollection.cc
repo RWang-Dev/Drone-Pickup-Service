@@ -36,7 +36,6 @@ void DataCollection::AddTrip(struct TripData *trip) {
   totalDistance += trip->getDistanceTraveled();
   totalRecharges += trip->getRecharges();
   totalBatteryUsage += trip->getBatteryUsed();
-  currentTripId++;
 } 
 
 bool DataCollection::WriteCSVFile(std::string filename) {
