@@ -66,7 +66,7 @@ void RechargerDrone::RechargeDrone(double dt) {
   if (drone->GetBattery() < 100) {
     drone->IncrementBattery(dt * 5);
   } else {
-    std::cout << "Done recharging drone" << std::endl;
+    // std::cout << "Done recharging drone" << std::endl;
     available = true;
     droneToRecharge = nullptr;
     finishedRechargingDrone = true;

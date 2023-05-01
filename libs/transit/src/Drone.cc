@@ -92,6 +92,7 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
   if (toRobot) {
     toRobot->Move(this, dt);
     dc->IncreaseTotalDistance(speed*dt);
+    tripData->IncreaseDistanceTraveled(speed * dt);
 
     if (toRobot->IsCompleted()) {
       delete toRobot;
@@ -100,6 +101,8 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
     }
   } else if (toFinalDestination) {
     toFinalDestination->Move(this, dt);
+    dc->IncreaseTotalDistance(speed*dt);
+    tripData->IncreaseDistanceTraveled(speed * dt);
 
     if (nearestEntity && pickedUp) {
       nearestEntity->SetPosition(position);

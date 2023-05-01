@@ -62,6 +62,9 @@ bool DataCollection::WriteCSVFile(std::string filename) {
 
   // Clean up
   csvOut.close();
+
+  std::cout << "Wrote " << filename << "!" << std::endl;
+
   return true;
 }
 
