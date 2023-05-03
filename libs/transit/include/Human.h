@@ -1,6 +1,7 @@
 #ifndef HUMAN_H_
 #define HUMAN_H_
 
+#include <vector>
 #include "IEntity.h"
 #include "IStrategy.h"
 
@@ -14,7 +15,7 @@ class Human : public IEntity {
    * @brief Humans are created with a name
    * @param obj JSON object containing the human's information
    */
-  Human(JsonObject& obj);
+  explicit Human(JsonObject& obj);
 
   /**
    * @brief Destroy the Human object

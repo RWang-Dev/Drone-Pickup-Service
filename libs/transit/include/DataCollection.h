@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "TripData.h"
+#include <string>
 
 /**
  * @brief Singleton class for collecting data about each trip that occurs during

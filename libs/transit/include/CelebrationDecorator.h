@@ -18,7 +18,7 @@ class CelebrationDecorator : public IStrategy {
    *
    * @param strategy the strategy to decorate onto
    */
-  CelebrationDecorator(IStrategy* strategy);
+  explicit CelebrationDecorator(IStrategy* strategy);
 
   /**
    * @brief Celebration Destructor

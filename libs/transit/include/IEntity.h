@@ -2,7 +2,7 @@
 #define ENTITY_H_
 
 #include <vector>
-
+#include <string>
 #include "TripData.h"
 #include "graph.h"
 #include "math/vector3.h"

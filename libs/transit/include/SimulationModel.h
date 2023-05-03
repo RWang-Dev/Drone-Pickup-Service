@@ -1,6 +1,7 @@
 #ifndef SIMULATION_MODEL_H_
 #define SIMULATION_MODEL_H_
 
+#include <vector>
 #include "CompositeFactory.h"
 #include "Drone.h"
 #include "IController.h"
@@ -22,7 +23,7 @@ class SimulationModel {
   /**
    * @brief Default constructor that create the SimulationModel object
    **/
-  SimulationModel(IController& controller);
+  explicit SimulationModel(IController& controller);
 
   /**
    * @brief Destructor

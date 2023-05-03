@@ -1,6 +1,7 @@
 #ifndef Helicopter_H_
 #define Helicopter_H_
 
+#include <vector>
 #include "IEntity.h"
 #include "IStrategy.h"
 
@@ -14,7 +15,7 @@ class Helicopter : public IEntity {
    * @brief Helicopter are created with a name
    * @param obj JSON object containing the drone's information
    */
-  Helicopter(JsonObject& obj);
+  explicit Helicopter(JsonObject& obj);
 
   /**
    * @brief Destroy the Helicopter object

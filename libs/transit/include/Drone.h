@@ -2,7 +2,7 @@
 #define DRONE_H_
 
 #include <vector>
-
+#include <string>
 #include "DataCollection.h"
 #include "IEntity.h"
 #include "IStrategy.h"
@@ -26,7 +26,7 @@ class Drone : public IEntity {
    * @brief Drones are created with a name
    * @param obj JSON object containing the drone's information
    */
-  Drone(JsonObject& obj);
+  explicit Drone(JsonObject& obj);
 
   /**
    * @brief Destructor

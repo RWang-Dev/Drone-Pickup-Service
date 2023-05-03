@@ -14,7 +14,7 @@ class SpinDecorator : public CelebrationDecorator {
    *
    * @param strategy the strategy to decorate onto
    */
-  SpinDecorator(IStrategy* strategy) : CelebrationDecorator(strategy) {}
+  explicit SpinDecorator(IStrategy* strategy):CelebrationDecorator(strategy) {}
 
   /**
    * @brief SpinDecorator Destructor
