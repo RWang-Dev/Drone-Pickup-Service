@@ -13,14 +13,10 @@
 using namespace std::this_thread; // sleep_for, sleep_until
 using namespace std::chrono; // nanoseconds, system_clock, seconds
 
-// Represents a recharger drone in a physical system.
-// Drones move using euler integration based on a specified
-// velocity and direction.
 /**
- * @class Recharger Drone
  * @brief Represents a Recharger drone in a physical system. Drones move using euler
  * integration based on a specified velocity and direction.
- */
+ **/
 class RechargerDrone : public IEntity {
  public:
   /**
@@ -115,10 +111,14 @@ class RechargerDrone : public IEntity {
   void RechargeDrone(double dt);
 
   /**
-   * @brief Removing the copy constructor and assignment operator
+   * @brief Removing the copy constructor 
    * so that Recharger drones cannot be copied.
    */
   RechargerDrone(const RechargerDrone& drone) = delete;
+  /**
+   * @brief Removing the assignment operator
+   * so that Recharger drones cannot be copied.
+   */
   RechargerDrone& operator=(const RechargerDrone& drone) = delete;
 
  private:

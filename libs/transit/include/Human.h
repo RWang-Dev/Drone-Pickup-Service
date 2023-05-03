@@ -4,6 +4,10 @@
 #include "IEntity.h"
 #include "IStrategy.h"
 
+/** 
+ * @class Human
+ * @brief Represents a human in the simulation
+ */
 class Human : public IEntity {
  public:
   /**

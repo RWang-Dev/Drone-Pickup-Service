@@ -1,0 +1,61 @@
+\hypertarget{classRechargerDroneFactory}{}\doxysection{Recharger\+Drone\+Factory Class Reference}
+\label{classRechargerDroneFactory}\index{RechargerDroneFactory@{RechargerDroneFactory}}
+
+
+Recharger \mbox{\hyperlink{classDrone}{Drone}} Factory to produce Recharger Drones class.  
+
+
+
+
+{\ttfamily \#include $<$Recharger\+Drone\+Factory.\+h$>$}
+
+
+
+Inheritance diagram for Recharger\+Drone\+Factory\+:
+% FIG 0
+
+
+Collaboration diagram for Recharger\+Drone\+Factory\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRechargerDroneFactory_a194c3bd2f07eef8920a6f6660cd8fb05}\label{classRechargerDroneFactory_a194c3bd2f07eef8920a6f6660cd8fb05}} 
+virtual \mbox{\hyperlink{classRechargerDroneFactory_a194c3bd2f07eef8920a6f6660cd8fb05}{$\sim$\+Recharger\+Drone\+Factory}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{classIEntityFactory}{I\+Entity\+Factory}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ \mbox{\hyperlink{classRechargerDroneFactory_af3989f3aea0cd9c3ce47be882dac44d4}{Create\+Entity}} (Json\+Object \&entity) override
+\begin{DoxyCompactList}\small\item\em Creates entity using the given J\+S\+ON object, if possible. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Recharger \mbox{\hyperlink{classDrone}{Drone}} Factory to produce Recharger Drones class. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRechargerDroneFactory_af3989f3aea0cd9c3ce47be882dac44d4}\label{classRechargerDroneFactory_af3989f3aea0cd9c3ce47be882dac44d4}} 
+\index{RechargerDroneFactory@{RechargerDroneFactory}!CreateEntity@{CreateEntity}}
+\index{CreateEntity@{CreateEntity}!RechargerDroneFactory@{RechargerDroneFactory}}
+\doxysubsubsection{\texorpdfstring{CreateEntity()}{CreateEntity()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ Recharger\+Drone\+Factory\+::\+Create\+Entity (\begin{DoxyParamCaption}\item[{Json\+Object \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates entity using the given J\+S\+ON object, if possible. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & -\/ Json\+Object to be used to create the new entity. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Entity that was created if it was created successfully, or a nullpointer if creation failed. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntityFactory_a9bd53cf7ca21ab252968062ea5d88180}{I\+Entity\+Factory}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/steph/\+Dropbox/\+C\+S\+C\+I 3081\+W/\+Team-\/001-\/36-\/homework4/libs/transit/include/Recharger\+Drone\+Factory.\+h\item 
+/mnt/c/\+Users/steph/\+Dropbox/\+C\+S\+C\+I 3081\+W/\+Team-\/001-\/36-\/homework4/libs/transit/src/Recharger\+Drone\+Factory.\+cc\end{DoxyCompactItemize}

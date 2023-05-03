@@ -7,10 +7,9 @@
 #include "TripData.h"
 
 /** 
- * @class Data Collection
  * @brief Singleton class for collecting data about each trip that occurs during the
  * simulation.
- */
+ **/
 class DataCollection { 
  private: 
   /**
