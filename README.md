@@ -27,11 +27,11 @@ Navigate to http://127.0.0.1:8081/schedule.html and you should see a page to sch
 *Note: 8081 will depends on what port you used. If you use port 8082, then it will be http://127.0.0.1:8082 instead.*
 
 ### Docker:
-(note this needs to be checked)
 This is the Dockerhub link: https://hub.docker.com/repository/docker/stephen3m/homework_4/general.
-Pull the docker image with ```docker pull <image_name>```
-Next, run the image with ```docker run --rm -it -p <local_port>:<container_port> <image_name>```
+Pull the docker image with ```docker pull stephen3m/homework_4```
+Next, run the image with ```docker run --rm -it -p 8081:8081 stephen3m/homework_4```
 From there, you are free to navigate to the website links listed above in the Git section.
+When finished, run ```docker kill [container id]``` to kill and remove the container.
 
 ## What the Simulation Does
 When the user schedules a trip for the drone to pick up and bring a robot to a specified destination, they will also choose the routing algorithm that will be used by the drone to reach that location (E.g. A*, Depth first search, Dijkstra's). Once the trip has been successfully scheduled, the nearest available (not already assigned to a robot) drone will be assigned to the newly created robot and will start flying directly towards it. Then, the drone will navigate to the final destination using the chosen routing algorithm. Because the drone's battery is constantly decremented throughout the simulation, the drone may run out of battery and stop moving in the middle of a trip. When this occurs, the closest available (not already assigned to recharging a drone) recharger drone will head directly to the dead drone. Once the recharger drone reaches the dead drone, the drone will immediately resume movement after being fully recharged by the recharger drone. After the drone reaches the final destination and drops off the robot, the drone then becomes available for the next trip. For each completed trip, the drone that completed it will collect data pertaining to battery usage, distance traveled, routing algorithm, etc. This information is saved and made readily available for outputting and analyzing.
