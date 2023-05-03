@@ -84,5 +84,5 @@ To improve our progress in the future, we can use Jira more in order to clearly 
 ### Data Collection
 ![Data Collection UML Diagram](assets/battery.png)
 
-### Battery
+### Battery, Recharger Drones, and Reservice
 ![Battery UML Diagram](assets/battery.png)
