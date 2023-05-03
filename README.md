@@ -77,4 +77,12 @@ During our last sprint, several things went well. Firstly, everyone played their
 
 While these were all notable things that went well, there were some things that hindered team efficiency and prevented team members from working at their full potential. Although our extension ideas seemed to be fine at the beginning, we soon realized that they required more refinement. We spent two lab sections talking to T.A.’s in order to come to a final conclusion on how to best implement our extensions. Afterwards, we encountered another roadblock: There were nuances and small details in each extension that had to be figured out before we could assign team members with tasks. The specifics of what needed to be done in order to achieve two fully-working extensions required at least 1.5 weeks to be fully fleshed out. As a result, little progress was being made towards the implementation of our extensions. However, after having sufficient information on the planning Google Docs, progress was quickly made. We focused on completing one extension and then moved on to the next. While the first extension was being worked on, one group member was also working on implementing the basics of the second extension. This made it so after the first extension was completed, the changes needed to link the two extensions together was simpler.  
 
-To improve our progress in the future, we can use Jira more in order to clearly define task assignments and responsibilities. 
+To improve our progress in the future, we can use Jira more in order to clearly define task assignments and responsibilities.  
+
+## UML Diagrams for extensions
+
+### Data Collection
+![Data Collection UML Diagram](assets/battery.png)
+
+### Battery, Recharger Drones, and Reservice
+![Battery UML Diagram](assets/battery.png)

@@ -1,0 +1,358 @@
+@startuml
+
+' From the base project
+class AstarStrategy {
+  +AstarStrategy(Vector3 position, Vector3 destination, const routing::IGraph* graph)
+}
+
+PathStrategy <|-.- AstarStrategy 
+
+class BeelineStrategy {
+  +BeelineStrategy(Vector3 position, Vector3 destination)
+
+  +Move(IEntity* entity, double dt) : void
+  +IsCompleted() : bool
+
+  -position : Vector3
+  -destination : Vector3
+}
+
+IStrategy <|-.- BeelineStrategy
+IEntity <--x BeelineStrategy
+
+abstract CelebrationDecorator {
+  +CelebrationDecorator(IStrategy* strategy)
+  +~CelebrationDecorator()
+
+  {abstract} +Move(IEntity* entity, double dt) : void = 0
+
+  {abstract} +IsCompleted() : bool 
+
+  #strategy : IStrategy*
+  #time : float
+}
+
+IStrategy <|-- CelebrationDecorator
+
+class CompositeFactory {
+  {abstract} +~CompositeFactory()
+
+  +CreateEntity(JsonObject& entity) : IEntity* 
+  +AddFactory(IEntityFactory* factoryEntity);
+  
+  -componentFactories : std::vector<IEntityFactory*>
+}
+
+IEntityFactory <|-.- CompositeFactory
+IEntityFactory *-- CompositeFactory
+
+class DfsStrategy {
+  +DfsStrategy(Vector3 position, Vector3 destination, const routing::IGraph* graph)
+}
+
+PathStrategy <|-.- DfsStrategy
+
+class DijkstraStrategy {
+  +DijkstraStrategy(Vector3 position, Vector3 destination, const rounting::IGraph* graph)
+}
+
+PathStrategy <|-.- DijkstraStrategy
+
+class Drone {
+  +Drone(JsonObject& obj)
+  +~Drone()
+  +Drone(const Drone& drone) = delete
+  Drone& operator=(const Drone& drone) = delete
+
+  +GetSpeed() const : float
+  +GetPosition() const : Vector3
+  +GetDirection() const : Vector3
+  +GetDestination() const : Vector3
+  +GetColor() const : std::string
+  +GetDetails() const : JsonObject
+  +GetAvailability() const : bool
+
+  +SetPosition(Vector3 pos_) : void
+  +SetDirection(Vector3 direction_) : void
+  +SetDestination(Vector3 des_) : void
+  +SetColor(std::string col_) : void
+
+  +void Rotate(double angle) : void
+  +void Jump(double height) : void
+  +void Update(double dt, std::vector<IEntity*> scheduler) : void
+  
+  +GetNearestEntity(std::vector<IEntity*> scheduler) : void
+  
+  -details : JsonObject
+  -position: Vector3
+  -direction: Vector3
+  -color : std::string = "None"
+  -jumpHeight : float
+  -goUp : bool = true
+  -destination : Vector3
+  -speed : float
+  -available : bool
+  -pickedUp : bool
+  -nearestEntity : IEntity* = nullptr
+  -toRobot : IStrategy* = nullptr
+  -toFinalDestination : IStrategy* = nullptr
+}
+
+IEntity <|-.- Drone
+Drone --> IStrategy : Navigates via
+
+class DroneFactory {
+  {abstract} +~DroneFactory()
+
+  +CreateEntity(JsonObject& entity) : IEntity*
+}
+
+IEntityFactory <|-.- DroneFactory
+DroneFactory --> Drone : Creates
+
+class Helicopter {
+  +Helicopter(JsonObject& obj);
+  +~Helicopter();
+
+  +GetSpeed() const : float
+  +GetPosition() const : Vector3
+  +GetDirection() const : Vector3
+  +GetDestination() const : Vector
+  +GetDetails() const : JsonObject
+
+  +SetPosition(Vector3 _pos) : void
+  +SetDirection(Vector3 dir_) : void
+  +SetDestination(Vector3 des_) : void
+
+  +CreateNewDestination() : void
+  
+  +Update(double dt, std::vector<IEntity*> scheduler) : void 
+  +Rotate(double angle) : void
+
+  -details : JsonObject
+  -position : Vector3
+  -direction : Vector3
+  -destination : Vector3
+  -speed : float
+  -toDestination : IStrategy* = nullptr
+}
+
+IEntity <|-.- Helicopter
+Helicopter --> IStrategy : Navigates via
+
+class HelicopterFactory {
+  {abstract} +~HelicopterFactory()
+
+  +CreateEntity(JsonObject& entity) : IEntity*
+}
+
+IEntityFactory <|-.- HelicopterFactory
+HelicopterFactory --> Helicopter : Creates
+
+class Human {
+  +Human(JsonObject& obj)
+  +~Human()
+
+  +GetSpeed() const : float
+  +GetPosition() const : Vector3
+  +GetDirection() const : Vector3
+  +GetDestination() const : Vector3
+  +GetDetails() const : JsonObject
+
+  +SetPosition(Vector3 pos_) : void
+  +SetDirection(Vector3 dir_) : void
+  +SetDestination(Vector3 des_) : void
+
+  +CreateNewDestination() : void
+
+  +Update(double dt, std::vector<IEntity*> scheduler) : void
+
+  -details : JsonObject
+  -position : Vector3
+  -direction : Vector3
+  -destination : Vector3
+  -speed : float
+  -toDestination : IStrategy* = nullptr
+}
+
+IEntity <-.- Human
+Human --> IStrategy : Navigates via
+
+class HumanFactory {
+  {abstract} +~HumanFactory()
+
+  +CreateEntity(JsonObject& entity) : IEntity*
+}
+
+IEntityFactory <|-.- HumanFactory
+HumanFactory --> Human : Creates
+
+abstract IController {
+  {abstract} +~IController()
+
+  {abstract} AddEntity(const IEntity& entity) : void = 0
+  {abstract} UpdateEntity(const IEntity& entity) : void = 0
+  {abstract} RemoveEntity(int id) : void = 0
+  {abstract} AddPath(int id, const std::vector<std::vector<float>>& path) : void = 0
+  {abstract} RemovePath(int id) : void = 0
+  {abstract} SendEventToView(const std::string& event, const JsonObject& details) : void = 0
+}
+
+IController --> IEntity : Manages
+
+abstract IEntity {
+  +IEntity()
+  {abstract} +~IEntity()
+
+  {abstract} +GetId() const : int
+  {abstract} +GetPosition() const : Vector3 = 0
+  {abstract} +GetDirection() const : Vector3 = 0
+  {abstract} +GetDestination() const : Vector3 = 0
+  {abstract} +GetDetails() const : JsonObject = 0
+  {abstract} +GetColor() const : std::string
+  {abstract} +GetSpeed() const : float = 0
+  {abstract} +GetAvailability() const : bool = 0
+  {abstract} +GetStrategyName() const : std::string = 0
+  {abstract} +Update(double dt, std::vector<IEntity*> scheduler) : void = 0
+
+  {abstract} +SetStrategyName(std::string strategyName_) : void = 0
+  +SetGraph(const IGraph* graph) : void
+  {abstract} +SetPosition(Vector3 pos_) : void
+  {abstract} +SetDirection(Vector3 dir_) : void
+  {abstract} +SetDestination(Vector3 des_) : void
+  {abstract} +SetColor(std::string col_) : void
+  {abstract} +Rotate(double angle) : void
+  {abstract} +Jump(double height) : void
+
+  #id : int
+  #graph : IGraph*
+}
+
+abstract IEntityFactory {
+  {abstract} +~IEntityFactory()
+
+  {abstract} +CreateEntity(JsonObject& entity) : void = 0
+}
+
+IEntityFactory --> IEntity : Creates
+
+abstract IStrategy {
+  {abstract} +Move(IEntity* entity, double dt) : void = 0 
+  {abstract} +IsCompleted() : bool = 0
+}
+
+class JumpDecorator {
+  +JumpDecorator(IStrategy* strategy)
+  {abstract} +Move(IEntity* entity, double dt) : void
+}
+
+CelebrationDecorator <|-.- JumpDecorator
+
+abstract PathStrategy {
+  +PathStrategy(std::vector<std::vector<float>> path = {})
+
+  {abstract} Move(IEntity* entity, double dt) : void
+  {abstract} IsCompleted() : bool
+}
+
+IStrategy <|-- PathStrategy
+
+class Robot {
+  +Robot(JsonObject& obj)
+  +~Robot() override = default
+
+  +GetPosition() const override : Vector3
+  +GetDirection() const override : Vector3
+  +GetDestination() const override : Vector3
+  +GetAvailability() const override : bool
+  +GetDetails() const override : JsonObject
+  +GetSpeed() const override : float
+  +GetStrategyName() const override : std::string
+  
+  +SetStrategyName(std::string strategyName_) override : void
+  +SetAvailability(bool choice) override : void 
+  +SetPosition(Vector3 pos_) override : void
+  +SetDirection(Vector3 dir_) override : void
+  +SetDestination(Vector3 des) override : void
+  +Rotate(double angle) override : void
+
+  -details : JsonObject
+  -position : Vector3
+  -destination : Vector3
+  -speed : float
+  -available : bool
+  -strategyName : std::string
+}
+
+IEntity <|-.- Robot
+
+class RobotFactory {
+  {abstract} +~RobotFactory()
+  +CreateEntity(JsonObject& entity) : IEntity*
+}
+
+IEntityFactory <|-.- RobotFactory
+RobotFactory --> Robot : Creates
+
+class SimulationModel {
+  +SimulationModel(IController& controller)
+  +~SimulationModel()
+
+  +SetGraph(const IGraph* graph) : void
+  +CreateEntity(JsonObject& entity) : void
+  +ScheduleTrip(JsonObject& details) : void
+  +Update(double dt) : void
+  +AddFactory(IEntityFactory* factory) : void
+
+  #controller : IController&
+  #entities : std::vector<IEntity*>
+  #scheduler : std::vector<IEntity*>
+  #graph : const IGraph*
+  #compFactory : CompositeFactory*
+}
+
+IController o-- SimulationModel
+IEntity o-- SimulationModel
+CompositeFactory o-- SimulationModel
+
+class SpinDecorator {
+  +SpinDecorator(IStrategy* strategy)
+  {abstract} +Move(IEntity* entity, double dt) : void
+}
+
+CelebrationDecorator <|-.- SpinDecorator
+
+' From the extension
+
+class DataCollection <<singleton>> {
+  +DataCollection(const DataCollection& o) = delete
+  +operator=(const DataCollection& o) : DataCollection* = delete
+  {static} +GetInstance() : DataCollection *
+  
+  +AddTrip(struct TripData* trip) : void
+  +OutputCSVFile() : bool
+
+  -currentTripId : int
+  {static} -instance : DataCollection*
+  -trips : std::list<struct TripData>
+
+  {static} -GetTripCSV(struct TripData* trip) : std::string
+
+  -WriteCSVFile(std::string filename) : bool
+}
+
+struct TripData {
+  tripId : int
+  droneId : int
+  distanceTraveled : int
+  routingAlgorhtm : std::string
+  recharges : int
+  batteryUsed : float
+}
+
+TripData o- DataCollection
+
+TripData <-- IEntity : Calls DataCollection::AddTrip
+
+DataCollection o-- IEntity
+@enduml
