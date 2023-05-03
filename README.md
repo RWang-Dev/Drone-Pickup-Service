@@ -28,6 +28,7 @@ Navigate to http://127.0.0.1:8081/schedule.html and you should see a page to sch
 
 ### Docker:
 (note this needs to be checked)
+This is the Dockerhub link: https://hub.docker.com/repository/docker/stephen3m/homework_4/general.
 Pull the docker image with ```docker pull <image_name>```
 Next, run the image with ```docker run --rm -it -p <local_port>:<container_port> <image_name>```
 From there, you are free to navigate to the website links listed above in the Git section.
