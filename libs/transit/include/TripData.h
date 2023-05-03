@@ -3,8 +3,10 @@
 
 #include <string>
 
-/** 
- * Class for collecting data on a single trip
+/**
+ * @class TripData
+ * @brief Stores important data for each trip, which aids in the data collection organization
+ *
  */
 class TripData {
  private:
@@ -15,18 +17,10 @@ class TripData {
   int recharges = 0;                // Number of times the drone needed to be recharged
   float batteryUsed = 0;            // Percentage of battery used during this trip, not counting recharges
  public:
-
-
   /**
- * @class TripData
- * @brief Stores the important data for each trip, which will help in the data collection organization
- *
- */
+   * @brief TripData constructor
+   */
   TripData() {}
-
-  // TripData(int tId, int dId, float distTrav, std::string routAlg, int rech, float battUsage) 
-  //   : tripId(tId), droneId(dId),  distanceTraveled(distTrav), routingAlgorithm(routAlg), 
-  //     recharges(rech), batteryUsed(battUsage) {}
 
   /**
     * @brief Gets distanceTraveled
@@ -98,8 +92,6 @@ class TripData {
   * @param tID the unique identifier ID of this trip
   */
   void SetTripID(int tID) {tripId = tID;}
-  
-
 };
 
 #endif
