@@ -4,7 +4,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 
 # import data from csv
-data = pd.read_csv(r"HW #4 Graph.csv")
+data = pd.read_csv("simdata-20230503173018.csv")
 
 data.sort_values('Routing Algorithm', inplace=True)
 
