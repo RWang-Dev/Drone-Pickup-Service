@@ -2,7 +2,7 @@
 #define ROBOT_H
 
 #include <vector>
-
+#include <string>
 #include "IEntity.h"
 #include "math/vector3.h"
 #include "util/json.h"
@@ -20,7 +20,7 @@ class Robot : public IEntity {
    * @brief Constructor
    * @param obj JSON object containing the robot's information
    */
-  Robot(JsonObject& obj);
+  explicit Robot(JsonObject& obj);
 
   /**
    * @brief Destructor

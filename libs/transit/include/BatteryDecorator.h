@@ -7,6 +7,7 @@
 #include "IStrategy.h"
 #include "RechargerDrone.h"
 #include "TripData.h"
+#include <vector>
 
 /**
  * @brief this class inhertis from the IStrategy class and is represents
@@ -18,7 +19,7 @@ class BatteryDecorator : public IEntity {
    * @brief Drones w/ battery are created with a name
    * @param ent entity pointer
    */
-  BatteryDecorator(IEntity* ent);
+  explicit BatteryDecorator(IEntity* ent);
 
   /**
    * @brief Destructor

@@ -18,7 +18,7 @@ This project is a drone simulation system that takes place on the University of 
 
 ## How to Run the Simulation
 
-### Git: 
+### Git:  
 In order to run the simulation, first git clone this repository. Then, cd into the project directory.  
 In order to build the project, type ```make -j``` in the terminal. To run the project, type ```./build/bin/transit_service 8081 apps/transit_service/web/``` in the terminal.  
 
@@ -28,6 +28,7 @@ Navigate to http://127.0.0.1:8081/schedule.html and you should see a page to sch
 
 ### Docker:
 (note this needs to be checked)
+This is the Dockerhub link: https://hub.docker.com/repository/docker/stephen3m/homework_4/general.
 Pull the docker image with ```docker pull <image_name>```
 Next, run the image with ```docker run --rm -it -p <local_port>:<container_port> <image_name>```
 From there, you are free to navigate to the website links listed above in the Git section.

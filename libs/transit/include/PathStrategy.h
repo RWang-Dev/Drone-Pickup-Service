@@ -1,6 +1,7 @@
 #ifndef PATH_STRATEGY_H_
 #define PATH_STRATEGY_H_
 
+#include <vector>
 #include "IStrategy.h"
 
 /**
@@ -18,7 +19,7 @@ class PathStrategy : public IStrategy {
    *
    * @param path the path to follow
    */
-  PathStrategy(std::vector<std::vector<float>> path = {});
+  explicit PathStrategy(std::vector<std::vector<float>> path = {});
 
   /**
    * @brief Move toward next position in the path

@@ -18,7 +18,7 @@ class RechargerDrone : public IEntity {
    * @brief Recharger Drones are created with a name
    * @param obj JSON object containing the drone's information
    */
-  RechargerDrone(JsonObject& obj);
+  explicit RechargerDrone(JsonObject& obj);
 
   /**
    * @brief Destructor

@@ -14,7 +14,7 @@ class JumpDecorator : public CelebrationDecorator {
    *
    * @param strategy the strategy to decorate onto
    */
-  JumpDecorator(IStrategy* strategy) : CelebrationDecorator(strategy) {}
+  explicit JumpDecorator(IStrategy* strategy):CelebrationDecorator(strategy) {}
 
   /**
    * @brief JumpDecorator Destructor

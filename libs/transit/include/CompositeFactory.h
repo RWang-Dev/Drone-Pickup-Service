@@ -2,6 +2,7 @@
 #define COMPOSITE_FACTORY_H_
 
 #include "IEntityFactory.h"
+#include <vector>
 
 /**
  *@brief Factory method for composite class. Inherits from IEntityFactory.
