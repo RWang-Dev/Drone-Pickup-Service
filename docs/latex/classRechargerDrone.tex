@@ -1,0 +1,313 @@
+\hypertarget{classRechargerDrone}{}\doxysection{Recharger\+Drone Class Reference}
+\label{classRechargerDrone}\index{RechargerDrone@{RechargerDrone}}
+
+
+Represents a Recharger drone in a physical system. Drones move using euler integration based on a specified velocity and direction.  
+
+
+
+
+{\ttfamily \#include $<$Recharger\+Drone.\+h$>$}
+
+
+
+Inheritance diagram for Recharger\+Drone\+:
+% FIG 0
+
+
+Collaboration diagram for Recharger\+Drone\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRechargerDrone_a4cbd0d0107857299b52f089d991b4d20}{Recharger\+Drone}} (Json\+Object \&obj)
+\begin{DoxyCompactList}\small\item\em Recharger Drones are created with a name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRechargerDrone_aa8d4466c8ab68b05c68404a07deba088}\label{classRechargerDrone_aa8d4466c8ab68b05c68404a07deba088}} 
+\mbox{\hyperlink{classRechargerDrone_aa8d4466c8ab68b05c68404a07deba088}{$\sim$\+Recharger\+Drone}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRechargerDrone_af11e8e97959e7d3d8de9a68956fbc61f}{Get\+Speed}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the speed of the Recharger drone. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classRechargerDrone_a686b9161cd0152988ef705e801e89056}{Get\+Position}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the position of the Recharger drone. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classRechargerDrone_ae1238e50247a018013ca0919e19ed471}{Get\+Direction}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the direction of the Recharger drone. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3}{Vector3}} \mbox{\hyperlink{classRechargerDrone_a4b107483fdf2e46630ed893d4728aa94}{Get\+Destination}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the destination of the Recharger drone. \end{DoxyCompactList}\item 
+Json\+Object \mbox{\hyperlink{classRechargerDrone_adfce5d223a8d942b54966745e5867123}{Get\+Details}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the details information of the Recharger drone. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRechargerDrone_ad2b4f5e98d2dd585685683b1eb945929}{Get\+Availability}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the availability of the Recharger drone. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRechargerDrone_ae6f4c95e3ba2f6af66053b6399eada6f}{Get\+Finished\+Recharging\+Drone}} () const
+\begin{DoxyCompactList}\small\item\em Gets the boolean for if drone has been finished recharing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRechargerDrone_a5e82c69a60c1de0b785e6931a7cec92a}{Update}} (double dt, std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$ scheduler) override
+\begin{DoxyCompactList}\small\item\em Updates the Recharger drone\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRechargerDrone_a00ad3fd5d3df813d5acfd46dd8b1d7c5}{Set\+Position}} (\mbox{\hyperlink{classVector3}{Vector3}} pos\+\_\+) override
+\begin{DoxyCompactList}\small\item\em Sets the position of the Recharger drone. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRechargerDrone_a3de9731ba8a86ae2a1b07f9f9cbfb8d2}{Set\+Direction}} (\mbox{\hyperlink{classVector3}{Vector3}} dir\+\_\+) override
+\begin{DoxyCompactList}\small\item\em Sets the direction of the Recharger drone. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRechargerDrone_a1dd4c068bd1a07d2ab052f11539d8211}{Set\+Destination}} (\mbox{\hyperlink{classVector3}{Vector3}} des\+\_\+) override
+\begin{DoxyCompactList}\small\item\em Sets the destination of the Recharger drone. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRechargerDrone_ac17f61f25341c14008521fd1c84eb09b}{Set\+Drone\+To\+Recharge}} (\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$drone\+To\+Recharge)
+\begin{DoxyCompactList}\small\item\em Sets the drone\+To\+Recharge variable to drone pointer, destination variable to drone position, and available variable to false. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRechargerDrone_adfa8463e12f244a8211ff66a231f463c}{Recharge\+Drone}} (double dt)
+\begin{DoxyCompactList}\small\item\em Recharges out-\/of-\/battery drone. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRechargerDrone_ab2fbb4b63119b3543f42fd155754a3a0}\label{classRechargerDrone_ab2fbb4b63119b3543f42fd155754a3a0}} 
+\mbox{\hyperlink{classRechargerDrone_ab2fbb4b63119b3543f42fd155754a3a0}{Recharger\+Drone}} (const \mbox{\hyperlink{classRechargerDrone}{Recharger\+Drone}} \&drone)=delete
+\begin{DoxyCompactList}\small\item\em Removing the copy constructor so that Recharger drones cannot be copied. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classRechargerDrone_adba9de197eebcc14d2ab7bfd20d73caf}\label{classRechargerDrone_adba9de197eebcc14d2ab7bfd20d73caf}} 
+\mbox{\hyperlink{classRechargerDrone}{Recharger\+Drone}} \& \mbox{\hyperlink{classRechargerDrone_adba9de197eebcc14d2ab7bfd20d73caf}{operator=}} (const \mbox{\hyperlink{classRechargerDrone}{Recharger\+Drone}} \&drone)=delete
+\begin{DoxyCompactList}\small\item\em Removing the assignment operator so that Recharger drones cannot be copied. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Represents a Recharger drone in a physical system. Drones move using euler integration based on a specified velocity and direction. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRechargerDrone_a4cbd0d0107857299b52f089d991b4d20}\label{classRechargerDrone_a4cbd0d0107857299b52f089d991b4d20}} 
+\index{RechargerDrone@{RechargerDrone}!RechargerDrone@{RechargerDrone}}
+\index{RechargerDrone@{RechargerDrone}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{RechargerDrone()}{RechargerDrone()}}
+{\footnotesize\ttfamily Recharger\+Drone\+::\+Recharger\+Drone (\begin{DoxyParamCaption}\item[{Json\+Object \&}]{obj }\end{DoxyParamCaption})}
+
+
+
+Recharger Drones are created with a name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & J\+S\+ON object containing the drone\textquotesingle{}s information \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRechargerDrone_ad2b4f5e98d2dd585685683b1eb945929}\label{classRechargerDrone_ad2b4f5e98d2dd585685683b1eb945929}} 
+\index{RechargerDrone@{RechargerDrone}!GetAvailability@{GetAvailability}}
+\index{GetAvailability@{GetAvailability}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{GetAvailability()}{GetAvailability()}}
+{\footnotesize\ttfamily bool Recharger\+Drone\+::\+Get\+Availability (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the availability of the Recharger drone. 
+
+\begin{DoxyReturn}{Returns}
+The availability of the Recharger drone 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a90348881691a37d5c3d63265ed3463b1}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRechargerDrone_a4b107483fdf2e46630ed893d4728aa94}\label{classRechargerDrone_a4b107483fdf2e46630ed893d4728aa94}} 
+\index{RechargerDrone@{RechargerDrone}!GetDestination@{GetDestination}}
+\index{GetDestination@{GetDestination}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{GetDestination()}{GetDestination()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector3}{Vector3}} Recharger\+Drone\+::\+Get\+Destination (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the destination of the Recharger drone. 
+
+\begin{DoxyReturn}{Returns}
+The destination of the Recharger drone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a0dcaf865938ab1fb49c8389b5e580d90}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRechargerDrone_adfce5d223a8d942b54966745e5867123}\label{classRechargerDrone_adfce5d223a8d942b54966745e5867123}} 
+\index{RechargerDrone@{RechargerDrone}!GetDetails@{GetDetails}}
+\index{GetDetails@{GetDetails}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{GetDetails()}{GetDetails()}}
+{\footnotesize\ttfamily Json\+Object Recharger\+Drone\+::\+Get\+Details (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the details information of the Recharger drone. 
+
+\begin{DoxyReturn}{Returns}
+The details information of the Recharger drone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a97c799400ce05e2ff2566adc4d7b9634}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRechargerDrone_ae1238e50247a018013ca0919e19ed471}\label{classRechargerDrone_ae1238e50247a018013ca0919e19ed471}} 
+\index{RechargerDrone@{RechargerDrone}!GetDirection@{GetDirection}}
+\index{GetDirection@{GetDirection}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{GetDirection()}{GetDirection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector3}{Vector3}} Recharger\+Drone\+::\+Get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the direction of the Recharger drone. 
+
+\begin{DoxyReturn}{Returns}
+The direction of the Recharger drone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_aa99a8fef8b22195a5113c38ef51f086d}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRechargerDrone_ae6f4c95e3ba2f6af66053b6399eada6f}\label{classRechargerDrone_ae6f4c95e3ba2f6af66053b6399eada6f}} 
+\index{RechargerDrone@{RechargerDrone}!GetFinishedRechargingDrone@{GetFinishedRechargingDrone}}
+\index{GetFinishedRechargingDrone@{GetFinishedRechargingDrone}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{GetFinishedRechargingDrone()}{GetFinishedRechargingDrone()}}
+{\footnotesize\ttfamily bool Recharger\+Drone\+::\+Get\+Finished\+Recharging\+Drone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the boolean for if drone has been finished recharing. 
+
+\begin{DoxyReturn}{Returns}
+Boolean value for finished\+Recharging\+Drone 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRechargerDrone_a686b9161cd0152988ef705e801e89056}\label{classRechargerDrone_a686b9161cd0152988ef705e801e89056}} 
+\index{RechargerDrone@{RechargerDrone}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVector3}{Vector3}} Recharger\+Drone\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the position of the Recharger drone. 
+
+\begin{DoxyReturn}{Returns}
+The position of the Recharger drone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a9bc32587aab91761fc0e718612498199}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRechargerDrone_af11e8e97959e7d3d8de9a68956fbc61f}\label{classRechargerDrone_af11e8e97959e7d3d8de9a68956fbc61f}} 
+\index{RechargerDrone@{RechargerDrone}!GetSpeed@{GetSpeed}}
+\index{GetSpeed@{GetSpeed}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{GetSpeed()}{GetSpeed()}}
+{\footnotesize\ttfamily float Recharger\+Drone\+::\+Get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the speed of the Recharger drone. 
+
+\begin{DoxyReturn}{Returns}
+The speed of the Recharger drone 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIEntity_a6520d2b1dc71d092bab38ef9f5cc9ff4}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRechargerDrone_adfa8463e12f244a8211ff66a231f463c}\label{classRechargerDrone_adfa8463e12f244a8211ff66a231f463c}} 
+\index{RechargerDrone@{RechargerDrone}!RechargeDrone@{RechargeDrone}}
+\index{RechargeDrone@{RechargeDrone}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{RechargeDrone()}{RechargeDrone()}}
+{\footnotesize\ttfamily void Recharger\+Drone\+::\+Recharge\+Drone (\begin{DoxyParamCaption}\item[{double}]{dt }\end{DoxyParamCaption})}
+
+
+
+Recharges out-\/of-\/battery drone. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Delta time \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRechargerDrone_a1dd4c068bd1a07d2ab052f11539d8211}\label{classRechargerDrone_a1dd4c068bd1a07d2ab052f11539d8211}} 
+\index{RechargerDrone@{RechargerDrone}!SetDestination@{SetDestination}}
+\index{SetDestination@{SetDestination}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{SetDestination()}{SetDestination()}}
+{\footnotesize\ttfamily void Recharger\+Drone\+::\+Set\+Destination (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVector3}{Vector3}}}]{des\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the destination of the Recharger drone. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em des\+\_\+} & The new destination of the Recharger drone \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_aa473000823f673e9d7b89aed3cd3fc5c}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRechargerDrone_a3de9731ba8a86ae2a1b07f9f9cbfb8d2}\label{classRechargerDrone_a3de9731ba8a86ae2a1b07f9f9cbfb8d2}} 
+\index{RechargerDrone@{RechargerDrone}!SetDirection@{SetDirection}}
+\index{SetDirection@{SetDirection}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{SetDirection()}{SetDirection()}}
+{\footnotesize\ttfamily void Recharger\+Drone\+::\+Set\+Direction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVector3}{Vector3}}}]{dir\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the direction of the Recharger drone. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dir\+\_\+} & The new direction of the Recharger drone \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a64bfaa448a929ca71693ff3e2edb9d97}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRechargerDrone_ac17f61f25341c14008521fd1c84eb09b}\label{classRechargerDrone_ac17f61f25341c14008521fd1c84eb09b}} 
+\index{RechargerDrone@{RechargerDrone}!SetDroneToRecharge@{SetDroneToRecharge}}
+\index{SetDroneToRecharge@{SetDroneToRecharge}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{SetDroneToRecharge()}{SetDroneToRecharge()}}
+{\footnotesize\ttfamily void Recharger\+Drone\+::\+Set\+Drone\+To\+Recharge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$}]{drone\+To\+Recharge }\end{DoxyParamCaption})}
+
+
+
+Sets the drone\+To\+Recharge variable to drone pointer, destination variable to drone position, and available variable to false. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drone\+To\+Recharge} & The drone to recharge \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRechargerDrone_a00ad3fd5d3df813d5acfd46dd8b1d7c5}\label{classRechargerDrone_a00ad3fd5d3df813d5acfd46dd8b1d7c5}} 
+\index{RechargerDrone@{RechargerDrone}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily void Recharger\+Drone\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVector3}{Vector3}}}]{pos\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the position of the Recharger drone. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+\_\+} & The new position of the Recharger drone \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_af0475048b09dc13ed6cf8e7c7be2ae6b}{I\+Entity}}.
+
+\mbox{\Hypertarget{classRechargerDrone_a5e82c69a60c1de0b785e6931a7cec92a}\label{classRechargerDrone_a5e82c69a60c1de0b785e6931a7cec92a}} 
+\index{RechargerDrone@{RechargerDrone}!Update@{Update}}
+\index{Update@{Update}!RechargerDrone@{RechargerDrone}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Recharger\+Drone\+::\+Update (\begin{DoxyParamCaption}\item[{double}]{dt,  }\item[{std\+::vector$<$ \mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$ $>$}]{scheduler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates the Recharger drone\textquotesingle{}s position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Delta time \\
+\hline
+{\em scheduler} & Vector containing all the entities in the system \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classIEntity_a9a8e8588fd85c7b0d813d60686d4dc2c}{I\+Entity}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/steph/\+Dropbox/\+C\+S\+C\+I 3081\+W/\+Team-\/001-\/36-\/homework4/libs/transit/include/Recharger\+Drone.\+h\item 
+/mnt/c/\+Users/steph/\+Dropbox/\+C\+S\+C\+I 3081\+W/\+Team-\/001-\/36-\/homework4/libs/transit/src/Recharger\+Drone.\+cc\end{DoxyCompactItemize}

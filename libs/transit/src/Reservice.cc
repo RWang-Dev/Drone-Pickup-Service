@@ -41,7 +41,10 @@ RechargerDrone* Reservice::FindNearestAvailableRechargerDrone(IEntity* drone) {
       }
     }
   }
-
-  nearest_recharger_drone->SetDroneToRecharge(drone);
-  return nearest_recharger_drone;
+  if (nearest_recharger_drone != nullptr) {
+    nearest_recharger_drone->SetDroneToRecharge(drone);
+    return nearest_recharger_drone;
+  } else {
+    return nullptr;
+  }
 }

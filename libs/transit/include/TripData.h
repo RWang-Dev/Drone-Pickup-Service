@@ -4,7 +4,9 @@
 #include <string>
 
 /**
- * Class for collecting data on a single trip
+ * @class TripData
+ * @brief Stores important data for each trip, which aids in the data collection organization
+ *
  */
 class TripData {
  private:
@@ -18,18 +20,9 @@ class TripData {
 
  public:
   /**
-   * @class TripData
-   * @brief Stores the important data for each trip, which will help in the data
-   * collection organization
-   *
+   * @brief TripData constructor
    */
   TripData() {}
-
-  // TripData(int tId, int dId, float distTrav, std::string routAlg, int rech,
-  // float battUsage)
-  //   : tripId(tId), droneId(dId),  distanceTraveled(distTrav),
-  //   routingAlgorithm(routAlg),
-  //     recharges(rech), batteryUsed(battUsage) {}
 
   /**
    * @brief Gets distanceTraveled
@@ -86,21 +79,21 @@ class TripData {
   void setDroneID(int droneID) { this->droneId = droneID; }
 
   /**
-   * @brief Increment the number of recharges during this trip by 1
-   */
-  void IncrementRecharges() { recharges += 1; }
+    * @brief Increment the number of recharges during this trip by 1
+    */
+  void IncrementRecharges() {recharges += 1;}
 
   /**
-   * @brief Sets batteryUsed
-   * @param batUsed of battery used during this trip, not counting recharges
-   */
-  void IncreaseBatteryUsed(float batUsed) { batteryUsed += batUsed; }
+    * @brief Sets batteryUsed
+    * @param batUsed of battery used during this trip, not counting recharges
+    */
+  void IncreaseBatteryUsed(float batUsed) { batteryUsed += batUsed;}
 
   /**
-   * @brief sets Trip ID
-   * @param tID the unique identifier ID of this trip
-   */
-  void SetTripID(int tID) { tripId = tID; }
+  * @brief sets Trip ID
+  * @param tID the unique identifier ID of this trip
+  */
+  void SetTripID(int tID) {tripId = tID;}
 };
 
 #endif

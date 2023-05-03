@@ -4,6 +4,10 @@
 #include "IEntity.h"
 #include "IStrategy.h"
 
+/** 
+ * @class Helicopter
+ * @brief Represents a helicopter in the simulation
+ */
 class Helicopter : public IEntity {
  public:
   /**

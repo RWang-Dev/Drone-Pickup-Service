@@ -86,12 +86,12 @@ class IEntity {
   /**
    * @brief Get the Strategy Name
    *
-   * @return Strategy name
+   * @return string representing strategy name
    */
   virtual std::string GetStrategyName() const { return ""; }
 
   /**
-   * @brief Get the a pointer to the current trip data
+   * @brief Get the pointer to the current trip data
    *
    * @return The pointer to the trip data
    */
@@ -165,6 +165,12 @@ class IEntity {
    */
   virtual void Jump(double height) {}
 
+  /**
+   * @brief Get a random float between given min and max
+   * @param Min lower bound
+   * @param Max upper bound
+   * @return random float between given min and max
+  */
   virtual float Random(float Min, float Max) {
     return ((static_cast<float>(rand()) /
     static_cast<float>(RAND_MAX)) * (Max - Min)) + Min;

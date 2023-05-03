@@ -1,0 +1,116 @@
+\hypertarget{classReservice}{}\doxysection{Reservice Class Reference}
+\label{classReservice}\index{Reservice@{Reservice}}
+
+
+Acts as a mediator between out-\/of-\/battery drones and recharger drones.  
+
+
+
+
+{\ttfamily \#include $<$Reservice.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classReservice_a20328bb6a020c75c977090c3e9933931}\label{classReservice_a20328bb6a020c75c977090c3e9933931}} 
+{\bfseries Reservice} (const \mbox{\hyperlink{classReservice}{Reservice}} \&o)=delete
+\item 
+\mbox{\hyperlink{classRechargerDrone}{Recharger\+Drone}} $\ast$ \mbox{\hyperlink{classReservice_ae59104867cca322b96913f4273e22664}{Find\+Nearest\+Available\+Recharger\+Drone}} (\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$drone)
+\begin{DoxyCompactList}\small\item\em Finds nearest, available recharger drone and calls its Set\+Drone\+To\+Recharge function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classReservice_a38c8273c55e663a697d4526f882855d8}{Add\+Recharger\+Drone}} (\mbox{\hyperlink{classRechargerDrone}{Recharger\+Drone}} $\ast$drone)
+\begin{DoxyCompactList}\small\item\em Adds recharger drone to recharger drone vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classReservice_af94b787911f47171aac93677dae44238}{Remove\+Recharger\+Drone}} (\mbox{\hyperlink{classRechargerDrone}{Recharger\+Drone}} $\ast$drone)
+\begin{DoxyCompactList}\small\item\em Removes recharger drone from recharger drone vector. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classRechargerDrone}{Recharger\+Drone}} $\ast$ $>$ \mbox{\hyperlink{classReservice_a179ff0f473c3681e3eda973bfcc53c8f}{Get\+Recharger\+Drones}} ()
+\begin{DoxyCompactList}\small\item\em Returns vector of all recharger drones in the system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classReservice}{Reservice}} $\ast$ \mbox{\hyperlink{classReservice_a2858256251a27b858594ef60d8884776}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Gets instance of this class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Acts as a mediator between out-\/of-\/battery drones and recharger drones. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classReservice_a38c8273c55e663a697d4526f882855d8}\label{classReservice_a38c8273c55e663a697d4526f882855d8}} 
+\index{Reservice@{Reservice}!AddRechargerDrone@{AddRechargerDrone}}
+\index{AddRechargerDrone@{AddRechargerDrone}!Reservice@{Reservice}}
+\doxysubsubsection{\texorpdfstring{AddRechargerDrone()}{AddRechargerDrone()}}
+{\footnotesize\ttfamily void Reservice\+::\+Add\+Recharger\+Drone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRechargerDrone}{Recharger\+Drone}} $\ast$}]{drone }\end{DoxyParamCaption})}
+
+
+
+Adds recharger drone to recharger drone vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drone} & Recharger drone to be added to vector of recharger drones \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classReservice_ae59104867cca322b96913f4273e22664}\label{classReservice_ae59104867cca322b96913f4273e22664}} 
+\index{Reservice@{Reservice}!FindNearestAvailableRechargerDrone@{FindNearestAvailableRechargerDrone}}
+\index{FindNearestAvailableRechargerDrone@{FindNearestAvailableRechargerDrone}!Reservice@{Reservice}}
+\doxysubsubsection{\texorpdfstring{FindNearestAvailableRechargerDrone()}{FindNearestAvailableRechargerDrone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRechargerDrone}{Recharger\+Drone}} $\ast$ Reservice\+::\+Find\+Nearest\+Available\+Recharger\+Drone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIEntity}{I\+Entity}} $\ast$}]{drone }\end{DoxyParamCaption})}
+
+
+
+Finds nearest, available recharger drone and calls its Set\+Drone\+To\+Recharge function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drone} & \mbox{\hyperlink{classDrone}{Drone}} that\textquotesingle{}s out of battery and needs to be recharged \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nearest, available recharger drone 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReservice_a2858256251a27b858594ef60d8884776}\label{classReservice_a2858256251a27b858594ef60d8884776}} 
+\index{Reservice@{Reservice}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!Reservice@{Reservice}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classReservice}{Reservice}} $\ast$ Reservice\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets instance of this class. 
+
+\begin{DoxyReturn}{Returns}
+Static pointer which points to instance of this class 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReservice_a179ff0f473c3681e3eda973bfcc53c8f}\label{classReservice_a179ff0f473c3681e3eda973bfcc53c8f}} 
+\index{Reservice@{Reservice}!GetRechargerDrones@{GetRechargerDrones}}
+\index{GetRechargerDrones@{GetRechargerDrones}!Reservice@{Reservice}}
+\doxysubsubsection{\texorpdfstring{GetRechargerDrones()}{GetRechargerDrones()}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classRechargerDrone}{Recharger\+Drone}}$\ast$$>$ Reservice\+::\+Get\+Recharger\+Drones (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns vector of all recharger drones in the system. 
+
+\begin{DoxyReturn}{Returns}
+Vector of recharger drones 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classReservice_af94b787911f47171aac93677dae44238}\label{classReservice_af94b787911f47171aac93677dae44238}} 
+\index{Reservice@{Reservice}!RemoveRechargerDrone@{RemoveRechargerDrone}}
+\index{RemoveRechargerDrone@{RemoveRechargerDrone}!Reservice@{Reservice}}
+\doxysubsubsection{\texorpdfstring{RemoveRechargerDrone()}{RemoveRechargerDrone()}}
+{\footnotesize\ttfamily void Reservice\+::\+Remove\+Recharger\+Drone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRechargerDrone}{Recharger\+Drone}} $\ast$}]{drone }\end{DoxyParamCaption})}
+
+
+
+Removes recharger drone from recharger drone vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drone} & Recharger drone to be removed from vector of recharger drones \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/steph/\+Dropbox/\+C\+S\+C\+I 3081\+W/\+Team-\/001-\/36-\/homework4/libs/transit/include/Reservice.\+h\item 
+/mnt/c/\+Users/steph/\+Dropbox/\+C\+S\+C\+I 3081\+W/\+Team-\/001-\/36-\/homework4/libs/transit/src/Reservice.\+cc\end{DoxyCompactItemize}

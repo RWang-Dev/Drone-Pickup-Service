@@ -7,12 +7,14 @@
 #include "TripData.h"
 
 /**
- * @class Data Collection
  * @brief Singleton class for collecting data about each trip that occurs during
- * the simulation.
- */
+ *the simulation.
+ **/
 class DataCollection {
  private:
+  /**
+   * @brief DataCollection constructor
+   */
   DataCollection() {}
 
   int droneNum = 0;                   // Number of drones in system
@@ -23,7 +25,11 @@ class DataCollection {
   float totalBatteryUsage;            // Total battery used
   int totalRecharges;  // The total number of drone recharge sessions
 
-  // Get the string representation of a trip
+  /**
+   * @brief Gets the string representation of a trip
+   * @param trip TripData struct pointer
+   * @return The string representation of a trip
+   */
   static std::string GetTripCSV(struct TripData* trip);
 
   /**
@@ -34,12 +40,16 @@ class DataCollection {
   bool WriteCSVFile(std::string filename);
 
  public:
-  // Delete copy constructor & assignment operator.
+  /**
+   * @brief Removing the copy constructor and assignment operator
+   * so that DataCollection cannot be copied.
+   */
   DataCollection(const DataCollection& o) = delete;
   DataCollection* operator=(const DataCollection& o) = delete;
 
   /**
-   * @brief Gets the single instance of DataCollection.
+   * @brief Gets the single instance pointer of DataCollection.
+   * @return Single DataCollection instance pointer
    */
   static DataCollection* GetInstance();
 
@@ -86,13 +96,13 @@ class DataCollection {
 
   /**
    * @brief Returns number of drones
-   * @return int: the current number of drones on screen
+   * @return the current number of drones on screen
    */
   int GetDroneNum() { return droneNum; }
 
   /**
    * @brief Returns current trip id
-   * @return int: the current trip IF
+   * @return the current trip ID
    */
   int GetTripId() { return currentTripId; }
 };
