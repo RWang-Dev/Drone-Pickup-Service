@@ -1,17 +1,12 @@
 #ifndef RECHARGERDRONE_H_
 #define RECHARGERDRONE_H_
 
-#include <chrono>
-#include <thread>
 #include <vector>
 
 #include "DijkstraStrategy.h"
 #include "IEntity.h"
 #include "IStrategy.h"
 #include "math/vector3.h"
-
-using namespace std::this_thread;  // sleep_for, sleep_until
-using namespace std::chrono;       // nanoseconds, system_clock, seconds
 
 /**
  * @brief Represents a Recharger drone in a physical system. Drones move using euler
