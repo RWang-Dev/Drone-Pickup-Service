@@ -18,7 +18,7 @@ This project is a drone simulation system that takes place on the University of 
 
 ## How to Run the Simulation
 
-### Git: 
+### Git:  
 In order to run the simulation, first git clone this repository. Then, cd into the project directory.  
 In order to build the project, type ```make -j``` in the terminal. To run the project, type ```./build/bin/transit_service 8081 apps/transit_service/web/``` in the terminal.  
 
