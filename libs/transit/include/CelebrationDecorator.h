@@ -20,7 +20,6 @@ class CelebrationDecorator : public IStrategy {
    */
   CelebrationDecorator(IStrategy* strategy);
 
-
   /**
    * @brief Celebration Destructor
    */
@@ -28,18 +27,18 @@ class CelebrationDecorator : public IStrategy {
 
   /**
    * @brief Move the entity with the behavior as described for 4 seconds.
-   * 
+   *
    * @param entity Entity to move
    * @param dt Delta Time
    */
-  virtual void Move(IEntity* entity, double dt) override = 0;
+  void Move(IEntity* entity, double dt) override = 0;
 
   /**
    * @brief Check if the movement is completed by checking the time.
    *
    * @return True if complete, false if not complete
    */
-  virtual bool IsCompleted() override;
+  bool IsCompleted() override;
 };
 
 #endif  // CELEBRATION_DECORATOR_H_

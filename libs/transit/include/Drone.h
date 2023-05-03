@@ -3,12 +3,12 @@
 
 #include <vector>
 
+#include "DataCollection.h"
 #include "IEntity.h"
 #include "IStrategy.h"
 #include "RechargerDrone.h"
 #include "TripData.h"
 #include "math/vector3.h"
-#include "DataCollection.h"
 
 class DataCollection;
 
@@ -21,7 +21,7 @@ class DataCollection;
  * integration based on a specified velocity and direction.
  */
 class Drone : public IEntity {
-public:
+ public:
   /**
    * @brief Drones are created with a name
    * @param obj JSON object containing the drone's information
@@ -79,7 +79,7 @@ public:
    * @brief Gets a pointer to the drone's current TripData
    * @return The pointer to a TripData object representing the current trip
    */
-  TripData *GetTripData() const { return tripData; }
+  TripData* GetTripData() const { return tripData; }
 
   /**
    * @brief Gets the nearest entity in the scheduler
@@ -91,7 +91,7 @@ public:
    * @brief Gets the TripData pointer
    * @return TripData object pointer
    */
-  TripData* GetTripData() {return tripData;}
+  TripData* GetTripData() { return tripData; }
 
   /**
    * @brief Updates the drone's position
@@ -128,7 +128,7 @@ public:
    * @brief Sets a new TripData object to track the current trip
    * @param trip_ The pointer to the new TripData object
    */
-  void SetTripData(TripData *trip_) { tripData = trip_; }
+  void SetTripData(TripData* trip_) { tripData = trip_; }
 
   /**
    * @brief Rotates the drone
@@ -162,13 +162,13 @@ public:
   Drone(const Drone& drone) = delete;
   Drone& operator=(const Drone& drone) = delete;
 
-private:
+ private:
   JsonObject details;
   Vector3 position;
   Vector3 direction;
-  std::string color = "None"; // None means default color
+  std::string color = "None";  // None means default color
   float jumpHeight = 0;
-  bool goUp = true; // jump helper
+  bool goUp = true;  // jump helper
   Vector3 destination;
   float speed;
   bool available;

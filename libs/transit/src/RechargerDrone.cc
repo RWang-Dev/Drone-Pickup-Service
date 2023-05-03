@@ -1,16 +1,17 @@
 #define _USE_MATH_DEFINES
 #include "RechargerDrone.h"
-#include "Reservice.h"
+
 #include <cmath>
 #include <limits>
 
 #include "AstarStrategy.h"
+#include "BatteryDecorator.h"
 #include "BeelineStrategy.h"
 #include "DfsStrategy.h"
 #include "DijkstraStrategy.h"
 #include "JumpDecorator.h"
+#include "Reservice.h"
 #include "SpinDecorator.h"
-#include "BatteryDecorator.h"
 
 RechargerDrone::RechargerDrone(JsonObject& obj) : details(obj) {
   JsonArray pos(obj["position"]);
@@ -22,7 +23,7 @@ RechargerDrone::RechargerDrone(JsonObject& obj) : details(obj) {
   available = true;
   finishedRechargingDrone = false;
 
-  //Add itself to reservice's vector of recharger drones when instantiated
+  // Add itself to reservice's vector of recharger drones when instantiated
   Reservice* mediator = Reservice::GetInstance();
   mediator->AddRechargerDrone(this);
 }
@@ -34,19 +35,15 @@ RechargerDrone::~RechargerDrone() {
 }
 
 void RechargerDrone::Update(double dt, std::vector<IEntity*> scheduler) {
-    if (available == false) {
-      if (routingStrategy == nullptr) {
-        routingStrategy = new BeelineStrategy(position, destination);
+  if (available == false) {
+    if (routingStrategy == nullptr) {
+      routingStrategy = new BeelineStrategy(position, destination);
+    } else {
+      if (!(routingStrategy->IsCompleted())) {
+        routingStrategy->Move(this, dt);
+      } else {
+        RechargerDrone::RechargeDrone(dt);
       }
-      else {
-        if(!(routingStrategy->IsCompleted())) { 
-          
-          routingStrategy->Move(this, dt);
-        } else {
-          
-          RechargerDrone::RechargeDrone(dt);
-          
-        }
     }
   }
 }
@@ -61,7 +58,7 @@ void RechargerDrone::SetDroneToRecharge(IEntity* droneToRecharge) {
   // std::cout << "Routing strat made" << std::endl;
 }
 
-void RechargerDrone::RechargeDrone(double dt) { 
+void RechargerDrone::RechargeDrone(double dt) {
   BatteryDecorator* drone = dynamic_cast<BatteryDecorator*>(droneToRecharge);
   if (drone->GetBattery() < 100) {
     drone->IncrementBattery(dt * 5);
@@ -71,5 +68,4 @@ void RechargerDrone::RechargeDrone(double dt) {
     droneToRecharge = nullptr;
     finishedRechargingDrone = true;
   }
-  
 }

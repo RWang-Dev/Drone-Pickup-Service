@@ -24,7 +24,7 @@ class BeelineStrategy : public IStrategy {
    * @param entity Entity to move
    * @param dt Delta Time
    */
-  void Move(IEntity* entity, double dt) override; 
+  void Move(IEntity* entity, double dt) override;
 
   /**
    * @brief Check if the trip is completed

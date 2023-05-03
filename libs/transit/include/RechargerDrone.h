@@ -1,25 +1,25 @@
 #ifndef RECHARGERDRONE_H_
 #define RECHARGERDRONE_H_
 
-#include <vector>
 #include <chrono>
 #include <thread>
+#include <vector>
 
+#include "DijkstraStrategy.h"
 #include "IEntity.h"
 #include "IStrategy.h"
-#include "DijkstraStrategy.h"
 #include "math/vector3.h"
 
-using namespace std::this_thread; // sleep_for, sleep_until
-using namespace std::chrono; // nanoseconds, system_clock, seconds
+using namespace std::this_thread;  // sleep_for, sleep_until
+using namespace std::chrono;       // nanoseconds, system_clock, seconds
 
 // Represents a recharger drone in a physical system.
 // Drones move using euler integration based on a specified
 // velocity and direction.
 /**
  * @class Recharger Drone
- * @brief Represents a Recharger drone in a physical system. Drones move using euler
- * integration based on a specified velocity and direction.
+ * @brief Represents a Recharger drone in a physical system. Drones move using
+ * euler integration based on a specified velocity and direction.
  */
 class RechargerDrone : public IEntity {
  public:
@@ -102,8 +102,8 @@ class RechargerDrone : public IEntity {
   void SetDestination(Vector3 des_) override { destination = des_; }
 
   /**
-   * @brief Sets the droneToRecharge variable to drone pointer, destination variable to 
-   * drone position, and available variable to false
+   * @brief Sets the droneToRecharge variable to drone pointer, destination
+   * variable to drone position, and available variable to false
    * @param droneToRecharge The drone to recharge
    */
   void SetDroneToRecharge(IEntity* droneToRecharge);

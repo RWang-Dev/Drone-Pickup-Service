@@ -166,7 +166,8 @@ class IEntity {
   virtual void Jump(double height) {}
 
   virtual float Random(float Min, float Max) {
-    return ((float(rand()) / float(RAND_MAX)) * (Max - Min)) + Min;
+    return ((static_cast<float>(rand()) /
+    static_cast<float>(RAND_MAX)) * (Max - Min)) + Min;
   }
 
  protected:

@@ -6,11 +6,11 @@
 
 #include "AstarStrategy.h"
 #include "BeelineStrategy.h"
+#include "DataCollection.h"
 #include "DfsStrategy.h"
 #include "DijkstraStrategy.h"
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
-#include "DataCollection.h"
 #include "TripData.h"
 
 Drone::Drone(JsonObject& obj) : details(obj) {
@@ -23,7 +23,7 @@ Drone::Drone(JsonObject& obj) : details(obj) {
 
   available = true;
 
-  dc = DataCollection::GetInstance(); 
+  dc = DataCollection::GetInstance();
 
   dc->IncrementDroneNum();
   droneID = dc->GetDroneNum();
@@ -50,7 +50,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
   }
 
   if (nearestEntity) {
-      // set availability to the nearest entity
+    // set availability to the nearest entity
     nearestEntity->SetAvailability(false);
     available = false;
     pickedUp = false;
@@ -66,21 +66,18 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
 
     std::string strat = nearestEntity->GetStrategyName();
     if (strat == "astar") {
-      toFinalDestination =
-        new JumpDecorator(new AstarStrategy(destination, finalDestination, graph));
-        tripData->setRoutingAlgorithm("astar");
-    }
-    else if (strat == "dfs") {
-      toFinalDestination =
-        new SpinDecorator(new JumpDecorator(new DfsStrategy(destination, finalDestination, graph)));
-        tripData->setRoutingAlgorithm("dfs");
-    }
-    else if (strat == "dijkstra") {
-      toFinalDestination =
-        new JumpDecorator(new SpinDecorator(new DijkstraStrategy(destination, finalDestination, graph)));
-        tripData->setRoutingAlgorithm("dijkstra");
-    }
-    else {
+      toFinalDestination = new JumpDecorator(
+          new AstarStrategy(destination, finalDestination, graph));
+      tripData->setRoutingAlgorithm("astar");
+    } else if (strat == "dfs") {
+      toFinalDestination = new SpinDecorator(new JumpDecorator(
+          new DfsStrategy(destination, finalDestination, graph)));
+      tripData->setRoutingAlgorithm("dfs");
+    } else if (strat == "dijkstra") {
+      toFinalDestination = new JumpDecorator(new SpinDecorator(
+          new DijkstraStrategy(destination, finalDestination, graph)));
+      tripData->setRoutingAlgorithm("dijkstra");
+    } else {
       toFinalDestination = new BeelineStrategy(destination, finalDestination);
       tripData->setRoutingAlgorithm("beeline");
     }
@@ -88,8 +85,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler) {
 }
 
 void Drone::Update(double dt, std::vector<IEntity*> scheduler) {
-  if (available)
-    GetNearestEntity(scheduler);
+  if (available) GetNearestEntity(scheduler);
 
   if (toRobot) {
     toRobot->Move(this, dt);
