@@ -100,5 +100,5 @@ To improve our progress in the future, we can use Jira more in order to clearly 
 ![Dijkstra Data](assets/dijkstra.png)
 
 ### Regression Line for All Three
-![Regression](assets/all_lls.png)
+![Regression](assets/all_lls.png)  
 Though there were many outliers for the trips taken by every routing algorithm, we can create and compare the least squares regression line for distance and battery usage. Doing this, we see that astar has the steepest slope, dijkstra has the second steepest, and dfs has the least steep. This means that astar has the worst battery usage to distance traveled ratio, while dfs has the best. This graph suggests that dfs would thus be the most efficient algorithm for the drones to use, but further testing and data analysis should be done.
