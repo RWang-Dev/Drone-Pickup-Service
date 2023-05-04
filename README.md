@@ -83,7 +83,18 @@ To improve our progress in the future, we can use Jira more in order to clearly 
 ## UML Diagrams for extensions
 
 ### Data Collection
-![Data Collection UML Diagram](assets/battery.png)
+![Data Collection UML Diagram](assets/datacollection.png)
 
 ### Battery, Recharger Drones, and Reservice
 ![Battery UML Diagram](assets/battery.png)
+
+## Graphs for Data Collected
+
+### A*
+![A* Data](assets/aStar.png)
+
+### DFS
+![DFS Data](assets/dfs.png)
+
+### Dijkstra
+![Dijkstra Data](assets/dijkstra.png)

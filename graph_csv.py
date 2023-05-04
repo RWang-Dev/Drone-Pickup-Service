@@ -14,12 +14,6 @@ astar = data[data['Routing Algorithm'] == "astar"]
 dijkstra = data[data['Routing Algorithm'] == "dijkstra"]
 dfs = data[data['Routing Algorithm'] == "dfs"]
 
-# trip = data['Trip ID'].values
-# drone = data['Drone ID'].values
-# dist = data['Distance Traveled'].values
-# rout = data['Routing Algorithm'].values
-# batt = data['Battery Used (%)'].values
-# recharge = data['No. Recharge Sessions'].values
 
 # astar section
 
@@ -46,6 +40,8 @@ plt.legend()
 plt.xlabel("Distance Traveled (astar)")
 plt.ylabel("Battery Used (%) (astar)")
 plt.show()
+plt.savefig("assets/aStar.png")
+plt.close()
 
 
 # dfs section
@@ -73,6 +69,8 @@ plt.legend()
 plt.xlabel("Distance Traveled (dfs)")
 plt.ylabel("Battery Used (%) (dfs)")
 plt.show()
+plt.savefig("assets/dfs.png")
+plt.close()
 
 
 # dijk section
@@ -100,4 +98,6 @@ plt.legend()
 plt.xlabel("Distance Traveled (dijkstra)")
 plt.ylabel("Battery Used (%) (dijkstra)")
 plt.show()
+plt.savefig("assets/dijkstra.png")
+plt.close()
 
