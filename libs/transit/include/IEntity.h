@@ -2,7 +2,8 @@
 #define ENTITY_H_
 
 #include <vector>
-
+#include <string>
+#include "TripData.h"
 #include "graph.h"
 #include "math/vector3.h"
 #include "util/json.h"
@@ -80,14 +81,21 @@ class IEntity {
    * @brief Gets the availability of the entity.
    * @return The availability of the entity.
    */
-  virtual bool GetAvailability() const {}
+  virtual bool GetAvailability() const { return false; }
 
   /**
    * @brief Get the Strategy Name
    *
-   * @return Streategy name
+   * @return string representing strategy name
    */
-  virtual std::string GetStrategyName() const {}
+  virtual std::string GetStrategyName() const { return ""; }
+
+  /**
+   * @brief Get the pointer to the current trip data
+   *
+   * @return The pointer to the trip data
+   */
+  virtual TripData* GetTripData() { return nullptr; }
 
   /**
    * @brief Set the Strategy Name
@@ -140,6 +148,12 @@ class IEntity {
   virtual void SetColor(std::string col_) {}
 
   /**
+   * @brief Sets the TripData pointed to for the current trip.
+   * @param trip_ The TripData pointer
+   */
+  virtual void SetTripData(TripData* _trip) {}
+
+  /**
    * @brief Rotate the entity.
    * @param angle The angle to rotate the entity by.
    */
@@ -151,8 +165,15 @@ class IEntity {
    */
   virtual void Jump(double height) {}
 
+  /**
+   * @brief Get a random float between given min and max
+   * @param Min lower bound
+   * @param Max upper bound
+   * @return random float between given min and max
+  */
   virtual float Random(float Min, float Max) {
-    return ((float(rand()) / float(RAND_MAX)) * (Max - Min)) + Min;
+    return ((static_cast<float>(rand()) /
+    static_cast<float>(RAND_MAX)) * (Max - Min)) + Min;
   }
 
  protected:

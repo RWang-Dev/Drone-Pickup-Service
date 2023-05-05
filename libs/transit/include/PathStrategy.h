@@ -1,6 +1,7 @@
 #ifndef PATH_STRATEGY_H_
 #define PATH_STRATEGY_H_
 
+#include <vector>
 #include "IStrategy.h"
 
 /**
@@ -18,7 +19,7 @@ class PathStrategy : public IStrategy {
    *
    * @param path the path to follow
    */
-  PathStrategy(std::vector<std::vector<float>> path = {});
+  explicit PathStrategy(std::vector<std::vector<float>> path = {});
 
   /**
    * @brief Move toward next position in the path
@@ -26,15 +27,15 @@ class PathStrategy : public IStrategy {
    * @param entity Entity to move
    * @param dt Delta Time
    */
-  virtual void Move(IEntity* entity, double dt);
+  void Move(IEntity* entity, double dt) override;
 
   /**
-   * @brief Check if the trip is completed by seeing if index 
+   * @brief Check if the trip is completed by seeing if index
    *        has reached the end of the path
    *
    * @return True if complete, false if not complete
    */
-  virtual bool IsCompleted();
+  bool IsCompleted() override;
 };
 
 #endif  // PATH_STRATEGY_H_

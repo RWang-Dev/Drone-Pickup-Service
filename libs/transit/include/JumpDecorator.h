@@ -8,14 +8,13 @@
  * a celebration decorator where the entity will celebrate according to it.
  */
 class JumpDecorator : public CelebrationDecorator {
-
  public:
   /**
    * @brief Construct a new Jump Decorator object
    *
    * @param strategy the strategy to decorate onto
    */
-  JumpDecorator(IStrategy* strategy) : CelebrationDecorator(strategy) {};
+  explicit JumpDecorator(IStrategy* strategy):CelebrationDecorator(strategy) {}
 
   /**
    * @brief JumpDecorator Destructor
@@ -24,11 +23,11 @@ class JumpDecorator : public CelebrationDecorator {
 
   /**
    * @brief Move the entity with the jump behavior for 4 seconds.
-   * 
+   *
    * @param entity Entity to move
    * @param dt Delta Time
    */
-  virtual void Move(IEntity* entity, double dt);
+  void Move(IEntity* entity, double dt) override;
 };
 
 #endif  // JUMP_DECORATOR_H_

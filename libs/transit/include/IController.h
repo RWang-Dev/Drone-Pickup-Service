@@ -1,6 +1,8 @@
 #ifndef CONTROLLER_H_
 #define CONTROLLER_H_
 
+#include <vector>
+#include <string>
 #include "IEntity.h"
 #include "util/json.h"
 

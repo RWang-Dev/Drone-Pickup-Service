@@ -3,6 +3,7 @@
 #include "WebServer.h"
 #include "SimulationModel.h"
 #include "routing_api.h"
+#include "DataCollection.h"
 
 //--------------------  Controller ----------------------------
 
@@ -18,12 +19,17 @@ public:
 
     /// Handles specific commands from the web server
     void ReceiveCommand(const std::string& cmd, JsonObject& data, JsonObject& returnValue) {
-        //std::cout << cmd << ": " << data << std::endl;
+        // std::cout << cmd << ": " << data << std::endl;
         if (cmd == "CreateEntity") {
             model.CreateEntity(data);
         }
         else if (cmd == "ScheduleTrip") {
             model.ScheduleTrip(data);
+        }
+        else if (cmd == "OutputCSVFile") {
+            // std::cout << "Attempting to output csv!" << std::endl;
+            DataCollection* dc = DataCollection::GetInstance();
+            dc->OutputCSVFile();
         }
         else if (cmd == "ping") {
             returnValue["response"] = data;

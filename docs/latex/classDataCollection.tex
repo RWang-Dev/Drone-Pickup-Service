@@ -1,0 +1,155 @@
+\hypertarget{classDataCollection}{}\doxysection{Data\+Collection Class Reference}
+\label{classDataCollection}\index{DataCollection@{DataCollection}}
+
+
+Singleton class for collecting data about each trip that occurs during the simulation.  
+
+
+
+
+{\ttfamily \#include $<$Data\+Collection.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDataCollection_af2ee0ae0afbd3aa73712f81255a7d75e}\label{classDataCollection_af2ee0ae0afbd3aa73712f81255a7d75e}} 
+\mbox{\hyperlink{classDataCollection_af2ee0ae0afbd3aa73712f81255a7d75e}{Data\+Collection}} (const \mbox{\hyperlink{classDataCollection}{Data\+Collection}} \&o)=delete
+\begin{DoxyCompactList}\small\item\em Removing the copy constructor and assignment operator so that \mbox{\hyperlink{classDataCollection}{Data\+Collection}} cannot be copied. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataCollection_afcec488a92b6941a60da7fdb0b2e21de}\label{classDataCollection_afcec488a92b6941a60da7fdb0b2e21de}} 
+\mbox{\hyperlink{classDataCollection}{Data\+Collection}} $\ast$ {\bfseries operator=} (const \mbox{\hyperlink{classDataCollection}{Data\+Collection}} \&o)=delete
+\item 
+void \mbox{\hyperlink{classDataCollection_ad6461e4d07221d8143c4c2d0ee961351}{Add\+Trip}} (\mbox{\hyperlink{classTripData}{Trip\+Data}} $\ast$trip)
+\begin{DoxyCompactList}\small\item\em Adds a trip the list of trips. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDataCollection_a622e39d916657960eaf8c10a8a5cab55}{Output\+C\+S\+V\+File}} ()
+\begin{DoxyCompactList}\small\item\em Writes C\+SV file to a file derived from date and time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataCollection_a82e9c2e8689a2eb480f5c79dc3b1669d}{Increase\+Total\+Distance}} (float dist)
+\begin{DoxyCompactList}\small\item\em Increases the total distance traveled by entities in current simulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataCollection_ad304d6ee6b3a18e24564d4f5e84f8705}{Increase\+Total\+Bat\+Usage}} (float bat\+Amt)
+\begin{DoxyCompactList}\small\item\em Increase the total battery usage of entities in current simulation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataCollection_afc9e040d02013767bee615e091958bab}\label{classDataCollection_afc9e040d02013767bee615e091958bab}} 
+void \mbox{\hyperlink{classDataCollection_afc9e040d02013767bee615e091958bab}{Increment\+Total\+Recharges}} ()
+\begin{DoxyCompactList}\small\item\em Increases the number of total recharges by 1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataCollection_a684109c7d72cab0790b02b44f5f1dca1}\label{classDataCollection_a684109c7d72cab0790b02b44f5f1dca1}} 
+void \mbox{\hyperlink{classDataCollection_a684109c7d72cab0790b02b44f5f1dca1}{Increment\+Trip\+ID}} ()
+\begin{DoxyCompactList}\small\item\em Increase trip number var by 1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDataCollection_a6f0cfbbd1665a7e47b87fc6a88e053c4}\label{classDataCollection_a6f0cfbbd1665a7e47b87fc6a88e053c4}} 
+void \mbox{\hyperlink{classDataCollection_a6f0cfbbd1665a7e47b87fc6a88e053c4}{Increment\+Drone\+Num}} ()
+\begin{DoxyCompactList}\small\item\em Increase drone number by 1, which will keep track of a drone ID essentially. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDataCollection_abecefbeaddebe77d0ee504d294166f34}{Get\+Drone\+Num}} ()
+\begin{DoxyCompactList}\small\item\em Returns number of drones. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDataCollection_ae7a08b7ddc9f97471c70af32c01b6c0e}{Get\+Trip\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Returns current trip id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classDataCollection}{Data\+Collection}} $\ast$ \mbox{\hyperlink{classDataCollection_a2d70e7d8f3d7551d74ca2887b94ada03}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Gets the single instance pointer of \mbox{\hyperlink{classDataCollection}{Data\+Collection}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class for collecting data about each trip that occurs during the simulation. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDataCollection_ad6461e4d07221d8143c4c2d0ee961351}\label{classDataCollection_ad6461e4d07221d8143c4c2d0ee961351}} 
+\index{DataCollection@{DataCollection}!AddTrip@{AddTrip}}
+\index{AddTrip@{AddTrip}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{AddTrip()}{AddTrip()}}
+{\footnotesize\ttfamily void Data\+Collection\+::\+Add\+Trip (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTripData}{Trip\+Data}} $\ast$}]{trip }\end{DoxyParamCaption})}
+
+
+
+Adds a trip the list of trips. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trip} & The trip to add. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDataCollection_abecefbeaddebe77d0ee504d294166f34}\label{classDataCollection_abecefbeaddebe77d0ee504d294166f34}} 
+\index{DataCollection@{DataCollection}!GetDroneNum@{GetDroneNum}}
+\index{GetDroneNum@{GetDroneNum}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{GetDroneNum()}{GetDroneNum()}}
+{\footnotesize\ttfamily int Data\+Collection\+::\+Get\+Drone\+Num (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns number of drones. 
+
+\begin{DoxyReturn}{Returns}
+the current number of drones on screen 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataCollection_a2d70e7d8f3d7551d74ca2887b94ada03}\label{classDataCollection_a2d70e7d8f3d7551d74ca2887b94ada03}} 
+\index{DataCollection@{DataCollection}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDataCollection}{Data\+Collection}} $\ast$ Data\+Collection\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the single instance pointer of \mbox{\hyperlink{classDataCollection}{Data\+Collection}}. 
+
+\begin{DoxyReturn}{Returns}
+Single \mbox{\hyperlink{classDataCollection}{Data\+Collection}} instance pointer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataCollection_ae7a08b7ddc9f97471c70af32c01b6c0e}\label{classDataCollection_ae7a08b7ddc9f97471c70af32c01b6c0e}} 
+\index{DataCollection@{DataCollection}!GetTripId@{GetTripId}}
+\index{GetTripId@{GetTripId}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{GetTripId()}{GetTripId()}}
+{\footnotesize\ttfamily int Data\+Collection\+::\+Get\+Trip\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns current trip id. 
+
+\begin{DoxyReturn}{Returns}
+the current trip ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDataCollection_ad304d6ee6b3a18e24564d4f5e84f8705}\label{classDataCollection_ad304d6ee6b3a18e24564d4f5e84f8705}} 
+\index{DataCollection@{DataCollection}!IncreaseTotalBatUsage@{IncreaseTotalBatUsage}}
+\index{IncreaseTotalBatUsage@{IncreaseTotalBatUsage}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{IncreaseTotalBatUsage()}{IncreaseTotalBatUsage()}}
+{\footnotesize\ttfamily void Data\+Collection\+::\+Increase\+Total\+Bat\+Usage (\begin{DoxyParamCaption}\item[{float}]{bat\+Amt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Increase the total battery usage of entities in current simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bat\+Amt} & amount to increase the total battery usage by \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDataCollection_a82e9c2e8689a2eb480f5c79dc3b1669d}\label{classDataCollection_a82e9c2e8689a2eb480f5c79dc3b1669d}} 
+\index{DataCollection@{DataCollection}!IncreaseTotalDistance@{IncreaseTotalDistance}}
+\index{IncreaseTotalDistance@{IncreaseTotalDistance}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{IncreaseTotalDistance()}{IncreaseTotalDistance()}}
+{\footnotesize\ttfamily void Data\+Collection\+::\+Increase\+Total\+Distance (\begin{DoxyParamCaption}\item[{float}]{dist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Increases the total distance traveled by entities in current simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dist} & Amount to increase the total distance by \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDataCollection_a622e39d916657960eaf8c10a8a5cab55}\label{classDataCollection_a622e39d916657960eaf8c10a8a5cab55}} 
+\index{DataCollection@{DataCollection}!OutputCSVFile@{OutputCSVFile}}
+\index{OutputCSVFile@{OutputCSVFile}!DataCollection@{DataCollection}}
+\doxysubsubsection{\texorpdfstring{OutputCSVFile()}{OutputCSVFile()}}
+{\footnotesize\ttfamily bool Data\+Collection\+::\+Output\+C\+S\+V\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Writes C\+SV file to a file derived from date and time. 
+
+\begin{DoxyReturn}{Returns}
+Whether the write succeeded 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/steph/\+Dropbox/\+C\+S\+C\+I 3081\+W/\+Team-\/001-\/36-\/homework4/libs/transit/include/Data\+Collection.\+h\item 
+/mnt/c/\+Users/steph/\+Dropbox/\+C\+S\+C\+I 3081\+W/\+Team-\/001-\/36-\/homework4/libs/transit/src/Data\+Collection.\+cc\end{DoxyCompactItemize}

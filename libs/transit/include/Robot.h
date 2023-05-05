@@ -2,7 +2,7 @@
 #define ROBOT_H
 
 #include <vector>
-
+#include <string>
 #include "IEntity.h"
 #include "math/vector3.h"
 #include "util/json.h"
@@ -20,7 +20,7 @@ class Robot : public IEntity {
    * @brief Constructor
    * @param obj JSON object containing the robot's information
    */
-  Robot(JsonObject& obj);
+  explicit Robot(JsonObject& obj);
 
   /**
    * @brief Destructor
@@ -31,25 +31,25 @@ class Robot : public IEntity {
    * @brief Gets the robot's position
    * @return The robot's position
    */
-  Vector3 GetPosition() const { return position; }
+  Vector3 GetPosition() const override { return position; }
 
   /**
    * @brief Gets the robot's direction
    * @return The robot's direction
    */
-  Vector3 GetDirection() const { return direction; }
+  Vector3 GetDirection() const override { return direction; }
 
   /**
    * @brief Gets the robot's destination
    * @return The robot's destination
    */
-  Vector3 GetDestination() const { return destination; }
+  Vector3 GetDestination() const override { return destination; }
 
   /**
    * @brief Gets the robot's availability
    * @return The robot's availability
    */
-  bool GetAvailability() const { return available; }
+  bool GetAvailability() const override { return available; }
 
   /**
    * @brief Gets the robot's details
@@ -61,21 +61,21 @@ class Robot : public IEntity {
    * @brief Gets the robot's speed
    * @return The robot's speed
    */
-  float GetSpeed() const { return speed; }
+  float GetSpeed() const override { return speed; }
 
   /**
    * @brief Get the Strategy Name
    *
    * @return Streategy name
    */
-  std::string GetStrategyName() const { return strategyName; }
+  std::string GetStrategyName() const override { return strategyName; }
 
   /**
    * @brief Set the Strategy Name
    *
    * @param strategyName_ Strategy name
    */
-  void SetStrategyName(std::string strategyName_) {
+  void SetStrategyName(std::string strategyName_) override {
     strategyName = strategyName_;
   }
 
@@ -83,31 +83,31 @@ class Robot : public IEntity {
    * @brief Sets the robot's availability
    * @param choice The new availability of the robot
    */
-  void SetAvailability(bool choice);
+  void SetAvailability(bool choice) override;
 
   /**
    * @brief Sets the robot's position
    * @param pos_ The new position of the robot
    */
-  void SetPosition(Vector3 pos_) { position = pos_; }
+  void SetPosition(Vector3 pos_) override { position = pos_; }
 
   /**
    * @brief Sets the robot's direction
    * @param dir_ The new direction of the robot
    */
-  void SetDirection(Vector3 dir_) { direction = dir_; }
+  void SetDirection(Vector3 dir_) override { direction = dir_; }
 
   /**
    * @brief Sets the robot's destination
    * @param des_ The new destination of the robot
    */
-  void SetDestination(Vector3 des_) { destination = des_; }
+  void SetDestination(Vector3 des_) override { destination = des_; }
 
   /**
    * @brief Rotates the robot
    * @param angle The angle by which the robot should be rotated
    */
-  void Rotate(double angle);
+  void Rotate(double angle) override;
 
  private:
   JsonObject details;

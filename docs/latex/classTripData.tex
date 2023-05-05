@@ -1,0 +1,206 @@
+\hypertarget{classTripData}{}\doxysection{Trip\+Data Class Reference}
+\label{classTripData}\index{TripData@{TripData}}
+
+
+Stores important data for each trip, which aids in the data collection organization.  
+
+
+
+
+{\ttfamily \#include $<$Trip\+Data.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTripData_ac24e6691a85f482d1bcdcc34ea684639}\label{classTripData_ac24e6691a85f482d1bcdcc34ea684639}} 
+\mbox{\hyperlink{classTripData_ac24e6691a85f482d1bcdcc34ea684639}{Trip\+Data}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classTripData}{Trip\+Data}} constructor. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classTripData_a35a6389b835f1590733837c0dc650c06}{get\+Distance\+Traveled}} ()
+\begin{DoxyCompactList}\small\item\em Gets distance\+Traveled. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classTripData_a7d22b2e9fd102ef73ea6c620ffffb710}{get\+Routing\+Algorithm}} ()
+\begin{DoxyCompactList}\small\item\em Gets routing\+Algorithm. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classTripData_a186e129bb5afc565e2db16ca3a1e372e}{get\+Recharges}} ()
+\begin{DoxyCompactList}\small\item\em Gets recharges. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classTripData_a1bcd25ca0d8258f048e0250611e160be}{get\+Battery\+Used}} ()
+\begin{DoxyCompactList}\small\item\em Gets battery\+Used. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTripData_a7d7d47155a3b3adb6238272e102bf92e}{get\+Trip\+ID}} ()
+\begin{DoxyCompactList}\small\item\em gets Trip ID \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTripData_a500b61e1810318ec25c9198cb3ea4c79}{get\+Drone\+ID}} ()
+\begin{DoxyCompactList}\small\item\em gets drone ID \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTripData_a06eded491ec5fe4e9c6b566b2638c421}{Increase\+Distance\+Traveled}} (float dist)
+\begin{DoxyCompactList}\small\item\em Increases the distances traveled by a certain amount. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTripData_a0b61d0a6aacd760b043896fc56586541}{set\+Routing\+Algorithm}} (std\+::string rout\+Alg)
+\begin{DoxyCompactList}\small\item\em Sets the routing algorithm of this trip. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTripData_a151ecf91948cf4f81420380580404ff0}{set\+Drone\+ID}} (int drone\+ID)
+\begin{DoxyCompactList}\small\item\em Sets drone ID. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTripData_a6a102c147c8768c4a95efc17733f34f5}\label{classTripData_a6a102c147c8768c4a95efc17733f34f5}} 
+void \mbox{\hyperlink{classTripData_a6a102c147c8768c4a95efc17733f34f5}{Increment\+Recharges}} ()
+\begin{DoxyCompactList}\small\item\em Increment the number of recharges during this trip by 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTripData_ac580d15dbdb00a47748ca799e160a627}{Increase\+Battery\+Used}} (float bat\+Used)
+\begin{DoxyCompactList}\small\item\em Sets battery\+Used. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTripData_add3d13920b058bc20afd655feb673b89}{Set\+Trip\+ID}} (int t\+ID)
+\begin{DoxyCompactList}\small\item\em sets Trip ID \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Stores important data for each trip, which aids in the data collection organization. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTripData_a1bcd25ca0d8258f048e0250611e160be}\label{classTripData_a1bcd25ca0d8258f048e0250611e160be}} 
+\index{TripData@{TripData}!getBatteryUsed@{getBatteryUsed}}
+\index{getBatteryUsed@{getBatteryUsed}!TripData@{TripData}}
+\doxysubsubsection{\texorpdfstring{getBatteryUsed()}{getBatteryUsed()}}
+{\footnotesize\ttfamily float Trip\+Data\+::get\+Battery\+Used (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets battery\+Used. 
+
+\begin{DoxyReturn}{Returns}
+Percentage of battery used during this trip, not counting recharges 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTripData_a35a6389b835f1590733837c0dc650c06}\label{classTripData_a35a6389b835f1590733837c0dc650c06}} 
+\index{TripData@{TripData}!getDistanceTraveled@{getDistanceTraveled}}
+\index{getDistanceTraveled@{getDistanceTraveled}!TripData@{TripData}}
+\doxysubsubsection{\texorpdfstring{getDistanceTraveled()}{getDistanceTraveled()}}
+{\footnotesize\ttfamily float Trip\+Data\+::get\+Distance\+Traveled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets distance\+Traveled. 
+
+\begin{DoxyReturn}{Returns}
+Distance traveled during this trip 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTripData_a500b61e1810318ec25c9198cb3ea4c79}\label{classTripData_a500b61e1810318ec25c9198cb3ea4c79}} 
+\index{TripData@{TripData}!getDroneID@{getDroneID}}
+\index{getDroneID@{getDroneID}!TripData@{TripData}}
+\doxysubsubsection{\texorpdfstring{getDroneID()}{getDroneID()}}
+{\footnotesize\ttfamily int Trip\+Data\+::get\+Drone\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+gets drone ID 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classDrone}{Drone}} ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTripData_a186e129bb5afc565e2db16ca3a1e372e}\label{classTripData_a186e129bb5afc565e2db16ca3a1e372e}} 
+\index{TripData@{TripData}!getRecharges@{getRecharges}}
+\index{getRecharges@{getRecharges}!TripData@{TripData}}
+\doxysubsubsection{\texorpdfstring{getRecharges()}{getRecharges()}}
+{\footnotesize\ttfamily float Trip\+Data\+::get\+Recharges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets recharges. 
+
+\begin{DoxyReturn}{Returns}
+Number of times the drone needed to be recharged 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTripData_a7d22b2e9fd102ef73ea6c620ffffb710}\label{classTripData_a7d22b2e9fd102ef73ea6c620ffffb710}} 
+\index{TripData@{TripData}!getRoutingAlgorithm@{getRoutingAlgorithm}}
+\index{getRoutingAlgorithm@{getRoutingAlgorithm}!TripData@{TripData}}
+\doxysubsubsection{\texorpdfstring{getRoutingAlgorithm()}{getRoutingAlgorithm()}}
+{\footnotesize\ttfamily std\+::string Trip\+Data\+::get\+Routing\+Algorithm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets routing\+Algorithm. 
+
+\begin{DoxyReturn}{Returns}
+String\+: Routing algorithm used during this trip 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTripData_a7d7d47155a3b3adb6238272e102bf92e}\label{classTripData_a7d7d47155a3b3adb6238272e102bf92e}} 
+\index{TripData@{TripData}!getTripID@{getTripID}}
+\index{getTripID@{getTripID}!TripData@{TripData}}
+\doxysubsubsection{\texorpdfstring{getTripID()}{getTripID()}}
+{\footnotesize\ttfamily int Trip\+Data\+::get\+Trip\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+gets Trip ID 
+
+\begin{DoxyReturn}{Returns}
+Trip ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classTripData_ac580d15dbdb00a47748ca799e160a627}\label{classTripData_ac580d15dbdb00a47748ca799e160a627}} 
+\index{TripData@{TripData}!IncreaseBatteryUsed@{IncreaseBatteryUsed}}
+\index{IncreaseBatteryUsed@{IncreaseBatteryUsed}!TripData@{TripData}}
+\doxysubsubsection{\texorpdfstring{IncreaseBatteryUsed()}{IncreaseBatteryUsed()}}
+{\footnotesize\ttfamily void Trip\+Data\+::\+Increase\+Battery\+Used (\begin{DoxyParamCaption}\item[{float}]{bat\+Used }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets battery\+Used. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bat\+Used} & of battery used during this trip, not counting recharges \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTripData_a06eded491ec5fe4e9c6b566b2638c421}\label{classTripData_a06eded491ec5fe4e9c6b566b2638c421}} 
+\index{TripData@{TripData}!IncreaseDistanceTraveled@{IncreaseDistanceTraveled}}
+\index{IncreaseDistanceTraveled@{IncreaseDistanceTraveled}!TripData@{TripData}}
+\doxysubsubsection{\texorpdfstring{IncreaseDistanceTraveled()}{IncreaseDistanceTraveled()}}
+{\footnotesize\ttfamily void Trip\+Data\+::\+Increase\+Distance\+Traveled (\begin{DoxyParamCaption}\item[{float}]{dist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Increases the distances traveled by a certain amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dist} & distance traveled during this trip \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTripData_a151ecf91948cf4f81420380580404ff0}\label{classTripData_a151ecf91948cf4f81420380580404ff0}} 
+\index{TripData@{TripData}!setDroneID@{setDroneID}}
+\index{setDroneID@{setDroneID}!TripData@{TripData}}
+\doxysubsubsection{\texorpdfstring{setDroneID()}{setDroneID()}}
+{\footnotesize\ttfamily void Trip\+Data\+::set\+Drone\+ID (\begin{DoxyParamCaption}\item[{int}]{drone\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets drone ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drone\+ID} & representing ID of drone \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTripData_a0b61d0a6aacd760b043896fc56586541}\label{classTripData_a0b61d0a6aacd760b043896fc56586541}} 
+\index{TripData@{TripData}!setRoutingAlgorithm@{setRoutingAlgorithm}}
+\index{setRoutingAlgorithm@{setRoutingAlgorithm}!TripData@{TripData}}
+\doxysubsubsection{\texorpdfstring{setRoutingAlgorithm()}{setRoutingAlgorithm()}}
+{\footnotesize\ttfamily void Trip\+Data\+::set\+Routing\+Algorithm (\begin{DoxyParamCaption}\item[{std\+::string}]{rout\+Alg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the routing algorithm of this trip. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rout\+Alg} & algorithm used during this trip \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classTripData_add3d13920b058bc20afd655feb673b89}\label{classTripData_add3d13920b058bc20afd655feb673b89}} 
+\index{TripData@{TripData}!SetTripID@{SetTripID}}
+\index{SetTripID@{SetTripID}!TripData@{TripData}}
+\doxysubsubsection{\texorpdfstring{SetTripID()}{SetTripID()}}
+{\footnotesize\ttfamily void Trip\+Data\+::\+Set\+Trip\+ID (\begin{DoxyParamCaption}\item[{int}]{t\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+sets Trip ID 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+ID} & the unique identifier ID of this trip \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/steph/\+Dropbox/\+C\+S\+C\+I 3081\+W/\+Team-\/001-\/36-\/homework4/libs/transit/include/Trip\+Data.\+h\end{DoxyCompactItemize}
